@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".ui.auth.login.LoginActivity">
+
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/img_logo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/_10sdp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintVertical_chainStyle="spread"
+			app:srcCompat="@drawable/logo_banner" />
+
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/appCompatTextView"
+			style="@style/TextStyle.Bold"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/assalamu_alaikum_amil_hebat"
+			android:textColor="@color/greyText"
+			android:textSize="@dimen/_14ssp"
+			app:layout_constraintEnd_toEndOf="@+id/img_logo"
+			app:layout_constraintStart_toStartOf="@+id/img_logo"
+			app:layout_constraintTop_toBottomOf="@+id/img_logo" />
+
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/appCompatTextView2"
+			style="@style/TextStyle.Regular"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/_2sdp"
+			android:text="@string/selamat_datang_di"
+			android:textColor="@color/greyText"
+			android:textSize="@dimen/_11ssp"
+			app:layout_constraintEnd_toEndOf="@+id/appCompatTextView"
+			app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
+			app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/tv_app_name"
+			style="@style/TextStyle.Bold"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/_10sdp"
+			android:text="@string/amil_khu_app"
+			android:textColor="@color/colorPrimary"
+			android:textSize="@dimen/_16ssp"
+			app:layout_constraintEnd_toEndOf="@+id/appCompatTextView2"
+			app:layout_constraintStart_toStartOf="@+id/appCompatTextView2"
+			app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
+
+		<com.google.android.material.textfield.TextInputLayout
+			android:id="@+id/username_layout"
+			style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="@dimen/_32sdp"
+			android:layout_marginTop="@dimen/_32sdp"
+			android:hint="@string/username"
+			app:hintTextColor="@color/lightGrey"
+			app:boxCornerRadiusTopStart="@dimen/_6sdp"
+			app:boxCornerRadiusBottomStart="@dimen/_6sdp"
+			app:boxCornerRadiusBottomEnd="@dimen/_6sdp"
+			app:boxCornerRadiusTopEnd="@dimen/_6sdp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_app_name"
+			app:startIconDrawable="@drawable/ic_baseline_account_box_24">
+
+			<com.google.android.material.textfield.TextInputEditText
+				android:id="@+id/username"
+				style="@style/TextStyle.Regular"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:imeOptions="actionNext"
+				android:inputType="textCapWords"
+				android:maxLines="1"
+				android:textColor="@color/black"
+				android:textSize="@dimen/_12ssp" />
+
+		</com.google.android.material.textfield.TextInputLayout>
+
+		<com.google.android.material.textfield.TextInputLayout
+			android:id="@+id/password_layout"
+			style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="@dimen/_32sdp"
+			android:layout_marginTop="@dimen/_8sdp"
+			android:hint="@string/password"
+			app:hintTextColor="@color/lightGrey"
+			app:boxCornerRadiusTopStart="@dimen/_6sdp"
+			app:boxCornerRadiusBottomStart="@dimen/_6sdp"
+			app:boxCornerRadiusBottomEnd="@dimen/_6sdp"
+			app:boxCornerRadiusTopEnd="@dimen/_6sdp"
+			app:layout_constraintEnd_toEndOf="@+id/username_layout"
+			app:layout_constraintStart_toStartOf="@+id/username_layout"
+			app:layout_constraintTop_toBottomOf="@+id/username_layout"
+			app:passwordToggleEnabled="true"
+			app:startIconDrawable="@drawable/ic_baseline_lock_24">
+
+			<com.google.android.material.textfield.TextInputEditText
+				android:id="@+id/password"
+				style="@style/TextStyle.Regular"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:imeOptions="actionDone"
+				android:inputType="textPassword"
+				android:textColor="@color/black"
+				android:textSize="@dimen/_12ssp" />
+
+		</com.google.android.material.textfield.TextInputLayout>
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btn_login"
+			style="@style/App.CustomTypographyStyles.Button.UnelevatedButton"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/_45sdp"
+			android:layout_marginHorizontal="@dimen/_32sdp"
+			android:layout_marginTop="@dimen/_32sdp"
+			android:text="@string/login"
+			android:layout_marginBottom="@dimen/_32sdp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
