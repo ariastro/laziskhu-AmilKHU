@@ -1,7 +1,6 @@
 <resources>
 	<string name="app_name">AmilKHU</string>
 	<string name="amil_khu_napp">AMIL KHU\nAPP</string>
-	<string name="title_activity_login">LoginActivity</string>
 	<string name="assalamu_alaikum_amil_hebat">Assalamu’alaikum Amil Hebat</string>
 	<string name="selamat_datang_di">Selamat datang di</string>
 	<string name="amil_khu_app">AMIL KHU APP</string>
@@ -13,4 +12,6 @@
 	<string name="riwayat_kehadiran">Riwayat Kehadiran</string>
 	<string name="admin_tools">Admin Tools</string>
 	<string name="amil_tools">Amil Tools</string>
+	<string name="invalid_field">%s tidak valid!</string>
+	<string name="empty_field">%s tidak boleh kosong!</string>
 </resources>

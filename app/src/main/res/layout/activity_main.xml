@@ -1,315 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@color/colorPrimary"
-	tools:context=".ui.main.MainActivity">
+	xmlns:tools="http://schemas.android.com/tools">
 
-	<androidx.appcompat.widget.AppCompatImageView
-		android:id="@+id/img_logo"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="@dimen/_16sdp"
-		android:layout_marginTop="@dimen/_16sdp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:srcCompat="@drawable/logo_banner_white" />
-
-	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/tv_app_name"
-		style="@style/TextStyle.Bold"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginEnd="@dimen/_16sdp"
-		android:text="@string/amil_khu_app"
-		android:textColor="@color/white"
-		android:textSize="@dimen/_12ssp"
-		app:layout_constraintBottom_toBottomOf="@+id/img_logo"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintTop_toTopOf="@+id/img_logo" />
-
-	<androidx.appcompat.widget.AppCompatTextView
-		android:id="@+id/welcoming_text"
-		style="@style/TextStyle.Bold"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="@dimen/_20sdp"
-		android:text="@string/assalamu_alaikum_amil_hebat"
-		android:textColor="@color/white"
-		android:textSize="@dimen/_14ssp"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/img_logo" />
-
-	<de.hdodenhof.circleimageview.CircleImageView
-		android:id="@+id/img_profile"
-		android:layout_width="@dimen/_120sdp"
-		android:layout_height="@dimen/_120sdp"
-		android:layout_marginTop="@dimen/_22sdp"
-		android:elevation="0.1dp"
-		app:civ_border_width="@dimen/_5sdp"
-		app:civ_border_color="@color/white"
-		tools:src="@tools:sample/avatars"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/welcoming_text" />
+	<data>
+		<variable
+			name="vm"
+			type="org.laziskhu.amilkhu.ui.main.MainViewModel" />
+	</data>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_marginTop="@dimen/_80sdp"
-		android:background="@drawable/ic_half_rounded"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/welcoming_text">
+		android:layout_height="match_parent"
+		android:background="@color/colorPrimary"
+		tools:context=".ui.main.MainActivity">
 
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/fullname"
-			style="@style/TextStyle.Bold"
-			android:layout_width="match_parent"
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/img_logo"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginHorizontal="@dimen/_20sdp"
-			android:layout_marginTop="@dimen/_70sdp"
-			android:gravity="center"
-			android:textColor="@color/greyText"
-			android:textSize="@dimen/_16ssp"
-			app:layout_constraintEnd_toEndOf="parent"
+			android:layout_marginStart="@dimen/_16sdp"
+			android:layout_marginTop="@dimen/_16sdp"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			tools:text="@tools:sample/full_names" />
+			app:srcCompat="@drawable/logo_banner_white" />
 
 		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/position"
-			style="@style/TextStyle.Regular"
-			android:layout_width="match_parent"
+			android:id="@+id/tv_app_name"
+			style="@style/TextStyle.Bold"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginHorizontal="@dimen/_20sdp"
-			android:gravity="center"
-			android:textColor="@color/greyText"
+			android:layout_marginEnd="@dimen/_16sdp"
+			android:text="@string/amil_khu_app"
+			android:textColor="@color/white"
 			android:textSize="@dimen/_12ssp"
-			app:layout_constraintEnd_toEndOf="@+id/fullname"
-			app:layout_constraintStart_toStartOf="@+id/fullname"
-			app:layout_constraintTop_toBottomOf="@+id/fullname"
-			tools:text="Admin" />
+			app:layout_constraintBottom_toBottomOf="@+id/img_logo"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/img_logo" />
 
-		<LinearLayout
-			android:id="@+id/layout_absensi"
-			android:layout_width="match_parent"
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/welcoming_text"
+			style="@style/TextStyle.Bold"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginHorizontal="@dimen/_8sdp"
-			android:layout_marginTop="@dimen/_12sdp"
-			android:orientation="horizontal"
-			android:padding="@dimen/_8sdp"
+			android:layout_marginTop="@dimen/_20sdp"
+			android:text="@string/assalamu_alaikum_amil_hebat"
+			android:textColor="@color/white"
+			android:textSize="@dimen/_14ssp"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/position">
+			app:layout_constraintTop_toBottomOf="@+id/img_logo" />
 
-			<com.google.android.material.card.MaterialCardView
-				android:id="@+id/absen_masuk"
-				style="@style/LayoutClickable"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_marginEnd="@dimen/_4sdp"
-				android:layout_weight="1"
-				app:cardCornerRadius="@dimen/_8sdp"
-				app:cardElevation="0dp">
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:gravity="center"
-					android:orientation="vertical"
-					android:padding="@dimen/_8sdp">
-
-					<androidx.appcompat.widget.AppCompatImageView
-						android:layout_width="@dimen/_50sdp"
-						android:layout_height="@dimen/_50sdp"
-						app:srcCompat="@drawable/ic_in_time" />
-
-					<androidx.appcompat.widget.AppCompatTextView
-						style="@style/TextStyle.Medium"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/_8sdp"
-						android:gravity="center"
-						android:text="@string/absen_masuk"
-						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
-
-				</LinearLayout>
-
-			</com.google.android.material.card.MaterialCardView>
-
-			<com.google.android.material.card.MaterialCardView
-				android:id="@+id/absen_keluar"
-				android:layout_width="0dp"
-				style="@style/LayoutClickable"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="@dimen/_8sdp"
-				android:layout_weight="1"
-				app:cardCornerRadius="@dimen/_8sdp"
-				app:cardElevation="0dp">
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:gravity="center"
-					android:orientation="vertical"
-					android:padding="@dimen/_8sdp">
-
-					<androidx.appcompat.widget.AppCompatImageView
-						android:layout_width="@dimen/_50sdp"
-						android:layout_height="@dimen/_50sdp"
-						app:srcCompat="@drawable/ic_out_time" />
-
-					<androidx.appcompat.widget.AppCompatTextView
-						style="@style/TextStyle.Medium"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/_8sdp"
-						android:gravity="center"
-						android:text="@string/absen_keluar"
-						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
-
-				</LinearLayout>
-
-			</com.google.android.material.card.MaterialCardView>
-
-			<com.google.android.material.card.MaterialCardView
-				android:id="@+id/history"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				style="@style/LayoutClickable"
-				android:layout_marginStart="@dimen/_4sdp"
-				android:layout_weight="1"
-				app:cardCornerRadius="@dimen/_8sdp"
-				app:cardElevation="0dp">
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:gravity="center"
-					android:orientation="vertical"
-					android:padding="@dimen/_8sdp">
-
-					<androidx.appcompat.widget.AppCompatImageView
-						android:layout_width="@dimen/_50sdp"
-						android:layout_height="@dimen/_50sdp"
-						android:background="@drawable/ic_circle"
-						android:padding="@dimen/_12sdp"
-						app:srcCompat="@drawable/ic_history" />
-
-					<androidx.appcompat.widget.AppCompatTextView
-						style="@style/TextStyle.Medium"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/_8sdp"
-						android:gravity="center"
-						android:text="@string/riwayat_kehadiran"
-						android:textColor="@color/greyText"
-						android:textSize="@dimen/_9ssp" />
-
-				</LinearLayout>
-
-			</com.google.android.material.card.MaterialCardView>
-
-		</LinearLayout>
-
-		<LinearLayout
-			android:id="@+id/layout_tools"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginHorizontal="@dimen/_8sdp"
-			android:orientation="horizontal"
-			android:padding="@dimen/_8sdp"
-			android:weightSum="3"
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:id="@+id/img_profile"
+			android:layout_width="@dimen/_120sdp"
+			android:layout_height="@dimen/_120sdp"
+			android:layout_marginTop="@dimen/_22sdp"
+			android:elevation="0.1dp"
+			app:civ_border_width="@dimen/_5sdp"
+			app:civ_border_color="@color/white"
+			tools:src="@tools:sample/avatars"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/layout_absensi">
+			app:layout_constraintTop_toBottomOf="@+id/welcoming_text" />
 
-			<com.google.android.material.card.MaterialCardView
-				android:id="@+id/amil_tools"
-				android:layout_width="0dp"
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_marginTop="@dimen/_80sdp"
+			android:background="@drawable/ic_half_rounded"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/welcoming_text">
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/fullname"
+				style="@style/TextStyle.Bold"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="@dimen/_4sdp"
-				android:layout_weight="1"
-				style="@style/LayoutClickable"
-				app:cardCornerRadius="@dimen/_8sdp"
-				app:cardElevation="0dp">
+				android:layout_marginHorizontal="@dimen/_20sdp"
+				android:layout_marginTop="@dimen/_70sdp"
+				android:gravity="center"
+				android:textColor="@color/greyText"
+				android:textSize="@dimen/_16ssp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:text="@tools:sample/full_names" />
 
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:gravity="center"
-					android:orientation="vertical"
-					android:padding="@dimen/_8sdp">
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/position"
+				style="@style/TextStyle.Regular"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/_20sdp"
+				android:gravity="center"
+				android:textColor="@color/greyText"
+				android:textSize="@dimen/_12ssp"
+				app:layout_constraintEnd_toEndOf="@+id/fullname"
+				app:layout_constraintStart_toStartOf="@+id/fullname"
+				app:layout_constraintTop_toBottomOf="@+id/fullname"
+				tools:text="Admin" />
 
-					<androidx.appcompat.widget.AppCompatImageView
-						android:layout_width="@dimen/_50sdp"
-						android:layout_height="@dimen/_50sdp"
-						android:background="@drawable/ic_circle"
-						android:backgroundTint="@color/orangeBg"
-						android:padding="@dimen/_12sdp"
-						app:srcCompat="@drawable/ic_salesman" />
-
-					<androidx.appcompat.widget.AppCompatTextView
-						style="@style/TextStyle.Medium"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/_8sdp"
-						android:gravity="center"
-						android:text="@string/amil_tools"
-						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
-
-				</LinearLayout>
-
-			</com.google.android.material.card.MaterialCardView>
-
-			<com.google.android.material.card.MaterialCardView
-				android:id="@+id/admin_tools"
-				android:layout_width="0dp"
+			<LinearLayout
+				android:id="@+id/layout_absensi"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginHorizontal="@dimen/_8sdp"
-				android:layout_weight="1"
-				style="@style/LayoutClickable"
-				app:cardCornerRadius="@dimen/_8sdp"
-				app:cardElevation="0dp">
+				android:layout_marginTop="@dimen/_12sdp"
+				android:orientation="horizontal"
+				android:padding="@dimen/_8sdp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/position">
 
-				<LinearLayout
-					android:layout_width="match_parent"
+				<com.google.android.material.card.MaterialCardView
+					android:id="@+id/absen_masuk"
+					style="@style/LayoutClickable"
+					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:gravity="center"
-					android:orientation="vertical"
-					android:padding="@dimen/_8sdp">
+					android:layout_marginEnd="@dimen/_4sdp"
+					android:layout_weight="1"
+					app:cardCornerRadius="@dimen/_8sdp"
+					app:cardElevation="0dp">
 
-					<androidx.appcompat.widget.AppCompatImageView
-						android:layout_width="@dimen/_50sdp"
-						android:layout_height="@dimen/_50sdp"
-						android:background="@drawable/ic_circle"
-						android:backgroundTint="@color/blueBg"
-						android:padding="@dimen/_12sdp"
-						app:srcCompat="@drawable/ic_admin_with_cogwheels" />
-
-					<androidx.appcompat.widget.AppCompatTextView
-						style="@style/TextStyle.Medium"
-						android:layout_width="wrap_content"
+					<LinearLayout
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/_8sdp"
 						android:gravity="center"
-						android:text="@string/admin_tools"
-						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
+						android:orientation="vertical"
+						android:padding="@dimen/_8sdp">
 
-				</LinearLayout>
+						<androidx.appcompat.widget.AppCompatImageView
+							android:layout_width="@dimen/_50sdp"
+							android:layout_height="@dimen/_50sdp"
+							app:srcCompat="@drawable/ic_in_time" />
 
-			</com.google.android.material.card.MaterialCardView>
+						<androidx.appcompat.widget.AppCompatTextView
+							style="@style/TextStyle.Medium"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/_8sdp"
+							android:gravity="center"
+							android:text="@string/absen_masuk"
+							android:textColor="@color/greyText"
+							android:textSize="@dimen/_10ssp" />
 
-		</LinearLayout>
+					</LinearLayout>
+
+				</com.google.android.material.card.MaterialCardView>
+
+				<com.google.android.material.card.MaterialCardView
+					android:id="@+id/absen_keluar"
+					android:layout_width="0dp"
+					style="@style/LayoutClickable"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/_8sdp"
+					android:layout_weight="1"
+					app:cardCornerRadius="@dimen/_8sdp"
+					app:cardElevation="0dp">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:orientation="vertical"
+						android:padding="@dimen/_8sdp">
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:layout_width="@dimen/_50sdp"
+							android:layout_height="@dimen/_50sdp"
+							app:srcCompat="@drawable/ic_out_time" />
+
+						<androidx.appcompat.widget.AppCompatTextView
+							style="@style/TextStyle.Medium"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/_8sdp"
+							android:gravity="center"
+							android:text="@string/absen_keluar"
+							android:textColor="@color/greyText"
+							android:textSize="@dimen/_10ssp" />
+
+					</LinearLayout>
+
+				</com.google.android.material.card.MaterialCardView>
+
+				<com.google.android.material.card.MaterialCardView
+					android:id="@+id/history"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					style="@style/LayoutClickable"
+					android:layout_marginStart="@dimen/_4sdp"
+					android:layout_weight="1"
+					app:cardCornerRadius="@dimen/_8sdp"
+					app:cardElevation="0dp">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:orientation="vertical"
+						android:padding="@dimen/_8sdp">
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:layout_width="@dimen/_50sdp"
+							android:layout_height="@dimen/_50sdp"
+							android:background="@drawable/ic_circle"
+							android:padding="@dimen/_12sdp"
+							app:srcCompat="@drawable/ic_history" />
+
+						<androidx.appcompat.widget.AppCompatTextView
+							style="@style/TextStyle.Medium"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/_8sdp"
+							android:gravity="center"
+							android:text="@string/riwayat_kehadiran"
+							android:textColor="@color/greyText"
+							android:textSize="@dimen/_9ssp" />
+
+					</LinearLayout>
+
+				</com.google.android.material.card.MaterialCardView>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/layout_tools"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/_8sdp"
+				android:orientation="horizontal"
+				android:padding="@dimen/_8sdp"
+				android:weightSum="3"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/layout_absensi">
+
+				<com.google.android.material.card.MaterialCardView
+					android:id="@+id/amil_tools"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="@dimen/_4sdp"
+					android:layout_weight="1"
+					style="@style/LayoutClickable"
+					app:cardCornerRadius="@dimen/_8sdp"
+					app:cardElevation="0dp">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:orientation="vertical"
+						android:padding="@dimen/_8sdp">
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:layout_width="@dimen/_50sdp"
+							android:layout_height="@dimen/_50sdp"
+							android:background="@drawable/ic_circle"
+							android:backgroundTint="@color/orangeBg"
+							android:padding="@dimen/_12sdp"
+							app:srcCompat="@drawable/ic_salesman" />
+
+						<androidx.appcompat.widget.AppCompatTextView
+							style="@style/TextStyle.Medium"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/_8sdp"
+							android:gravity="center"
+							android:text="@string/amil_tools"
+							android:textColor="@color/greyText"
+							android:textSize="@dimen/_10ssp" />
+
+					</LinearLayout>
+
+				</com.google.android.material.card.MaterialCardView>
+
+				<com.google.android.material.card.MaterialCardView
+					android:id="@+id/admin_tools"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/_8sdp"
+					android:layout_weight="1"
+					style="@style/LayoutClickable"
+					app:cardCornerRadius="@dimen/_8sdp"
+					app:cardElevation="0dp">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:orientation="vertical"
+						android:padding="@dimen/_8sdp">
+
+						<androidx.appcompat.widget.AppCompatImageView
+							android:layout_width="@dimen/_50sdp"
+							android:layout_height="@dimen/_50sdp"
+							android:background="@drawable/ic_circle"
+							android:backgroundTint="@color/blueBg"
+							android:padding="@dimen/_12sdp"
+							app:srcCompat="@drawable/ic_admin_with_cogwheels" />
+
+						<androidx.appcompat.widget.AppCompatTextView
+							style="@style/TextStyle.Medium"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/_8sdp"
+							android:gravity="center"
+							android:text="@string/admin_tools"
+							android:textColor="@color/greyText"
+							android:textSize="@dimen/_10ssp" />
+
+					</LinearLayout>
+
+				</com.google.android.material.card.MaterialCardView>
+
+			</LinearLayout>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

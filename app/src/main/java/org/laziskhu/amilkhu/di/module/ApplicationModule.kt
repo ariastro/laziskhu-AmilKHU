@@ -1,6 +1,8 @@
 package org.laziskhu.amilkhu.di.module
 
 import com.skydoves.sandwich.coroutines.CoroutinesResponseCallAdapterFactory
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,7 +39,8 @@ class ApplicationModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory
+                .create(Moshi.Builder().add(KotlinJsonAdapterFactory()).build()).asLenient())
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())

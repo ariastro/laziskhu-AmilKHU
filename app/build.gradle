@@ -109,6 +109,7 @@ dependencies {
 
     // shared preferences
     implementation "com.chibatching.kotpref:kotpref:$kotprefVersion"
+    implementation "com.chibatching.kotpref:enum-support:$kotprefVersion"
 
     // glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
@@ -143,9 +144,11 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.2.4"
 
     //Dagger - Hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation "com.google.dagger:hilt-android:$hiltCoreVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltCoreVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hiltCoreVersion"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$hiltCoreVersion"
 
     // CircleImageView
     implementation "de.hdodenhof:circleimageview:$circleImageView"
