@@ -18,4 +18,9 @@
 	<string name="jam_kerja">Jam kerja</string>
 	<string name="jam_pulang">Jam pulang</string>
 	<string name="jam_datang">Jam datang</string>
+	<string name="permission_denied">Permission Denied!</string>
+	<string name="failed_to_get_location">Failed to get location!</string>
+	<string name="mendapatkan_lokasi">Mendapatkan lokasi…</string>
+	<string name="catatan">Catatan</string>
+	<string name="submit">Submit</string>
 </resources>

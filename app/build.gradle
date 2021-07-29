@@ -156,4 +156,6 @@ dependencies {
 
     // imagePicker
     implementation "com.github.dhaval2404:imagepicker:$imagePickerVersion"
+
+    implementation "com.google.android.gms:play-services-location:18.0.0"
 }

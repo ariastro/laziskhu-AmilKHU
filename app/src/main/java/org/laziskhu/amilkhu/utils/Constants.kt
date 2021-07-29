@@ -22,11 +22,16 @@ object Constants {
     const val monthOnlyFormat = "MMM "
     const val timeOnlyFormat = "HH:mm:ss"
 
-    const val WAITING = "WAITING"
-    const val ACCEPTED = "ACCEPTED"
-    const val DENIED = "DENIED"
-    const val MENUNGGU = "MENUNGGU"
-    const val DITERIMA = "DITERIMA"
-    const val DITOLAK = "DITOLAK"
+    const val WAITING = "Waiting"
+    const val ACCEPTED = "Accepted"
+    const val DENIED = "Denied"
+    const val MENUNGGU = "Menunggu"
+    const val DITERIMA = "Diterima"
+    const val DITOLAK = "Ditolak"
+
+    const val LAZISKHU_LATITUDE = -7.966976
+    const val LAZISKHU_LONGITUDE = 112.660932
+
+    const val MAX_DISTANCE = 2000.3
 
 }

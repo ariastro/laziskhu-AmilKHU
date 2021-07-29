@@ -17,7 +17,6 @@
 		android:layout_marginVertical="@dimen/_4sdp">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
-			style="@style/LayoutClickable"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="@dimen/_12sdp">
@@ -33,8 +32,8 @@
 				app:strokeWidth="0.3dp">
 
 				<LinearLayout
-					android:layout_width="@dimen/_45sdp"
-					android:layout_height="@dimen/_45sdp"
+					android:layout_width="@dimen/_40sdp"
+					android:layout_height="@dimen/_40sdp"
 					android:gravity="center"
 					android:orientation="vertical">
 
@@ -71,7 +70,7 @@
 				android:drawableStart="@drawable/ic_diagonal_arrow_down"
 				android:drawablePadding="@dimen/_8sdp"
 				android:textColor="@color/green"
-				android:textSize="@dimen/_12ssp"
+				android:textSize="@dimen/_11ssp"
 				app:layout_constraintBottom_toTopOf="@id/notes"
 				app:layout_constraintEnd_toStartOf="@+id/check_out_time"
 				app:layout_constraintHorizontal_bias="0.5"
@@ -90,7 +89,7 @@
 				android:drawablePadding="@dimen/_8sdp"
 				android:text="@{itemHistory.homeTime}"
 				android:textColor="@color/colorPrimary"
-				android:textSize="@dimen/_12ssp"
+				android:textSize="@dimen/_11ssp"
 				app:layout_constraintBottom_toTopOf="@id/notes"
 				app:layout_constraintEnd_toStartOf="@+id/status"
 				app:layout_constraintStart_toEndOf="@+id/check_in_time"
@@ -100,7 +99,7 @@
 			<androidx.appcompat.widget.AppCompatTextView
 				android:id="@+id/status"
 				style="@style/TextStyle.Regular"
-				android:layout_width="0dp"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:gravity="center"
 				android:textColor="@color/white"
@@ -108,7 +107,7 @@
 				android:paddingVertical="@dimen/_4sdp"
 				android:paddingHorizontal="@dimen/_8sdp"
 				android:layout_marginStart="@dimen/_6sdp"
-				android:textSize="@dimen/_8ssp"
+				android:textSize="@dimen/_10ssp"
 				app:layout_constraintBottom_toTopOf="@id/notes"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintHorizontal_bias="0.5"

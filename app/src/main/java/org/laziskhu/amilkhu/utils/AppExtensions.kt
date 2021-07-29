@@ -1,8 +1,11 @@
 package org.laziskhu.amilkhu.utils
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -10,7 +13,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.github.dhaval2404.imagepicker.ImagePicker
 import es.dmoral.toasty.Toasty
@@ -21,6 +28,9 @@ import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
 import timber.log.Timber
 import java.util.*
+import kotlin.math.acos
+import kotlin.math.cos
+import kotlin.math.sin
 
 fun View.toVisible() {
     visibility = View.VISIBLE
@@ -125,4 +135,48 @@ fun LocalDate.format(pattern: String): String {
 fun LocalDateTime.format(pattern: String): String {
     val formatter = DateTimeFormatter.ofPattern(pattern, Locale(LANGUAGE_ID, COUNTRY_CODE_ID))
     return formatter.format(this)
+}
+
+internal fun Context.getDrawableCompat(@DrawableRes drawable: Int) = ContextCompat.getDrawable(this, drawable)
+
+internal fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
+
+fun Activity.hasPermissionLocation(context: Context, REQUEST_PERMISSION_CODE: Int): Boolean {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+        if (context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) ==
+            PackageManager.PERMISSION_GRANTED) {
+            true
+        } else {
+            // Show the permission request
+            ActivityCompat.requestPermissions(
+                this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_PERMISSION_CODE
+            )
+            false
+        }
+    } else {
+        true
+    }
+}
+
+fun getDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
+    val theta = lon1 - lon2
+    var dist = (sin(deg2rad(lat1))
+            * sin(deg2rad(lat2))
+            + (cos(deg2rad(lat1))
+            * cos(deg2rad(lat2))
+            * cos(deg2rad(theta))))
+    dist = acos(dist)
+    dist = rad2deg(dist)
+    dist *= 60 * 1.1515
+    return dist
+}
+
+private fun deg2rad(deg: Double): Double {
+    return deg * Math.PI / 180.0
+}
+
+private fun rad2deg(rad: Double): Double {
+    return rad * 180.0 / Math.PI
 }

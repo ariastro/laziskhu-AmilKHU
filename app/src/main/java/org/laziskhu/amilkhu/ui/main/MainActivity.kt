@@ -1,8 +1,6 @@
 package org.laziskhu.amilkhu.ui.main
 
-import android.app.Activity
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
@@ -13,9 +11,9 @@ import org.laziskhu.amilkhu.data.source.local.Prefs
 import org.laziskhu.amilkhu.data.source.remote.response.GetProfileResponse
 import org.laziskhu.amilkhu.databinding.ActivityMainBinding
 import org.laziskhu.amilkhu.di.module.GlideApp
+import org.laziskhu.amilkhu.ui.attendance.checkin.CheckInActivity
 import org.laziskhu.amilkhu.ui.attendance.history.HistoryAttendanceActivity
 import org.laziskhu.amilkhu.utils.Role
-import org.laziskhu.amilkhu.utils.imagePickerCamera
 import org.laziskhu.amilkhu.utils.pushActivity
 import org.laziskhu.amilkhu.vo.Status
 
@@ -42,23 +40,13 @@ class MainActivity : BaseActivity() {
 
     private fun setupClickListeners() {
         binding.btnCheckIn.setOnClickListener {
-            imagePickerCamera(checkInLauncher)
+            pushActivity(CheckInActivity::class.java)
         }
 
         binding.btnHistory.setOnClickListener {
             pushActivity(HistoryAttendanceActivity::class.java)
         }
 
-    }
-
-    private val checkInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        val resultCode = result.resultCode
-        val data = result.data
-        if (resultCode == Activity.RESULT_OK) {
-            val fileUri = data?.data!!
-            val path = fileUri.path
-
-        }
     }
 
     private fun getProfile() {

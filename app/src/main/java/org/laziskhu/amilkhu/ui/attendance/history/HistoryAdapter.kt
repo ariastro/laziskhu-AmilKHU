@@ -6,8 +6,10 @@ import androidx.core.view.isGone
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import org.laziskhu.amilkhu.R
 import org.laziskhu.amilkhu.data.source.remote.response.HistoryAttendance
 import org.laziskhu.amilkhu.databinding.ItemHistoryBinding
+import org.laziskhu.amilkhu.utils.*
 import org.laziskhu.amilkhu.utils.Constants.ACCEPTED
 import org.laziskhu.amilkhu.utils.Constants.DENIED
 import org.laziskhu.amilkhu.utils.Constants.DITERIMA
@@ -17,8 +19,7 @@ import org.laziskhu.amilkhu.utils.Constants.WAITING
 import org.laziskhu.amilkhu.utils.Constants.dateOnlyFormat
 import org.laziskhu.amilkhu.utils.Constants.monthOnlyFormat
 import org.laziskhu.amilkhu.utils.Constants.timeStampFormat
-import org.laziskhu.amilkhu.utils.format
-import org.laziskhu.amilkhu.utils.toLocalDate
+import org.laziskhu.amilkhu.utils.getColorCompat
 
 class HistoryAdapter(private val onClick: (HistoryAttendance) -> Unit) :
     ListAdapter<HistoryAttendance, HistoryAdapter.HistoryViewHolder>(DiffCallback) {
@@ -38,13 +39,23 @@ class HistoryAdapter(private val onClick: (HistoryAttendance) -> Unit) :
         holder.binding.notes.text = history.catatan
         holder.binding.notes.isGone = history.catatan.isNullOrEmpty()
         holder.binding.checkOutTime.text = history.homeTime?.take(5) ?: "-"
-        holder.binding.status.text = history.status
-//            when (history.status) {
-//                WAITING -> MENUNGGU
-//                ACCEPTED -> DITERIMA
-//                DENIED -> DITOLAK
-//                else -> MENUNGGU
-//            }
+        val context = holder.binding.status.context
+        holder.binding.status.apply {
+            when (history.status) {
+                WAITING -> {
+                    text = MENUNGGU
+                    background = context.getDrawableCompat(R.drawable.ic_orange_rounded)
+                }
+                ACCEPTED -> {
+                    text = DITERIMA
+                    background = context.getDrawableCompat(R.drawable.ic_green_rounded)
+                }
+                DENIED -> {
+                    text = DITOLAK
+                    background = context.getDrawableCompat(R.drawable.ic_red_rounded)
+                }
+            }
+        }
 
         holder.binding.root.setOnClickListener {
             if (history != null) {

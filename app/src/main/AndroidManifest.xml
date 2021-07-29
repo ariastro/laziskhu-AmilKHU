@@ -3,7 +3,11 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	package="org.laziskhu.amilkhu">
 
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 	<application
 		android:name=".AmilKHUApp"
@@ -15,7 +19,9 @@
 		android:theme="@style/Theme.AmilKHU"
 		android:usesCleartextTraffic="true"
 		tools:targetApi="Q">
-		<activity android:name=".ui.attendance.checkin.CheckInActivity"></activity>
+		<activity
+			android:name=".ui.attendance.checkin.CheckInActivity"
+			android:label="@string/absen_masuk"/>
 		<activity
 			android:name=".ui.attendance.history.HistoryAttendanceActivity"
 			android:label="@string/riwayat_kehadiran" />
