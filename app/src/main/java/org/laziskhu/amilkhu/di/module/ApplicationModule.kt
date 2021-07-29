@@ -16,6 +16,7 @@ import org.laziskhu.amilkhu.data.source.remote.RemoteDataSource
 import org.laziskhu.amilkhu.data.source.remote.api.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -41,6 +42,7 @@ class ApplicationModule {
         Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory
                 .create(Moshi.Builder().add(KotlinJsonAdapterFactory()).build()).asLenient())
+            .addConverterFactory(ScalarsConverterFactory.create())
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+		<variable
+			name="itemHistory"
+			type="org.laziskhu.amilkhu.data.source.remote.response.HistoryAttendance" />
+	</data>
+
+	<com.google.android.material.card.MaterialCardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:cardCornerRadius="@dimen/_2sdp"
+		android:layout_marginHorizontal="@dimen/_8sdp"
+		android:layout_marginVertical="@dimen/_4sdp">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			style="@style/LayoutClickable"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/_12sdp">
+
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/materialCardView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/notes"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:strokeColor="@color/lightGrey2"
+				app:strokeWidth="0.3dp">
+
+				<LinearLayout
+					android:layout_width="@dimen/_45sdp"
+					android:layout_height="@dimen/_45sdp"
+					android:gravity="center"
+					android:orientation="vertical">
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/date"
+						style="@style/TextStyle.Bold"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/greyText"
+						android:textSize="@dimen/_12ssp"
+						tools:text="11" />
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/month"
+						style="@style/TextStyle.Bold"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/greyText"
+						android:textSize="@dimen/_10ssp"
+						tools:text="JUN" />
+
+				</LinearLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/check_in_time"
+				style="@style/TextStyle.Regular"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/_12sdp"
+				android:layout_marginEnd="@dimen/_6sdp"
+				android:text="@{itemHistory.comingTime}"
+				android:drawableStart="@drawable/ic_diagonal_arrow_down"
+				android:drawablePadding="@dimen/_8sdp"
+				android:textColor="@color/green"
+				android:textSize="@dimen/_12ssp"
+				app:layout_constraintBottom_toTopOf="@id/notes"
+				app:layout_constraintEnd_toStartOf="@+id/check_out_time"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintHorizontal_chainStyle="spread_inside"
+				app:layout_constraintStart_toEndOf="@+id/materialCardView"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:text="09:15" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/check_out_time"
+				style="@style/TextStyle.Regular"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/_6sdp"
+				android:drawableStart="@drawable/ic_diagonal_arrow_top"
+				android:drawablePadding="@dimen/_8sdp"
+				android:text="@{itemHistory.homeTime}"
+				android:textColor="@color/colorPrimary"
+				android:textSize="@dimen/_12ssp"
+				app:layout_constraintBottom_toTopOf="@id/notes"
+				app:layout_constraintEnd_toStartOf="@+id/status"
+				app:layout_constraintStart_toEndOf="@+id/check_in_time"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:text="17:45" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/status"
+				style="@style/TextStyle.Regular"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:textColor="@color/white"
+				android:background="@drawable/ic_orange_rounded"
+				android:paddingVertical="@dimen/_4sdp"
+				android:paddingHorizontal="@dimen/_8sdp"
+				android:layout_marginStart="@dimen/_6sdp"
+				android:textSize="@dimen/_8ssp"
+				app:layout_constraintBottom_toTopOf="@id/notes"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toEndOf="@+id/check_out_time"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:text="Waiting" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/notes"
+				style="@style/TextStyle.Regular"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:text="@tools:sample/lorem/random[4]"
+				android:layout_marginTop="@dimen/_8sdp"
+				android:maxLines="2"
+				android:ellipsize="end"
+				android:textColor="@color/greyText"
+				android:textSize="@dimen/_10ssp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/materialCardView"
+				app:layout_constraintStart_toStartOf="@+id/materialCardView" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</com.google.android.material.card.MaterialCardView>
+
+</layout>

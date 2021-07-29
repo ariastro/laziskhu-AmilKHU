@@ -50,4 +50,9 @@
 		<item name="android:background">?attr/selectableItemBackground</item>
 	</style>
 
+	<style name="AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+		<item name="fontFamily">@font/poppins_medium</item>
+		<item name="android:includeFontPadding">false</item>
+	</style>
+
 </resources>

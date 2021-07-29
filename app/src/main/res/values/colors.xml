@@ -12,5 +12,9 @@
 
 	<color name="greyText">#4D4D4D</color>
 	<color name="lightGrey">#747476</color>
+	<color name="lightGrey2">#BDBDBD</color>
+
+	<color name="green">#5bcd90</color>
+	<color name="red">#ef5061</color>
 
 </resources>

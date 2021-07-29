@@ -16,7 +16,17 @@ object Constants {
     const val SUPER_ADMIN_CODE = "2"
 
     const val timeStampFormat = "yyyy-MM-dd"
-    const val dateFormat = "dd/MM/yyyy"
     const val completeDateFormat = "dd MMMM yyyy"
+    const val dateFormat = "dd MMM yyyy"
+    const val dateOnlyFormat = "dd"
+    const val monthOnlyFormat = "MMM "
+    const val timeOnlyFormat = "HH:mm:ss"
+
+    const val WAITING = "WAITING"
+    const val ACCEPTED = "ACCEPTED"
+    const val DENIED = "DENIED"
+    const val MENUNGGU = "MENUNGGU"
+    const val DITERIMA = "DITERIMA"
+    const val DITOLAK = "DITOLAK"
 
 }

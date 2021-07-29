@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "org.laziskhu.amilkhu"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -23,11 +23,11 @@ android {
     productFlavors {
         development {
             buildConfigField "String", 'BASE_URL', BASE_URL
-//            buildConfigField "String", 'IMAGE_URL', IMAGE_URL
+            buildConfigField "String", 'IMAGE_URL', IMAGE_URL
         }
         production {
             buildConfigField "String", 'BASE_URL', BASE_URL
-//            buildConfigField "String", 'IMAGE_URL', IMAGE_URL
+            buildConfigField "String", 'IMAGE_URL', IMAGE_URL
         }
     }
     buildFeatures {
@@ -84,6 +84,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
 
     // moshi
     implementation "com.squareup.moshi:moshi:$moshiVersion"
@@ -152,4 +153,7 @@ dependencies {
 
     // CircleImageView
     implementation "de.hdodenhof:circleimageview:$circleImageView"
+
+    // imagePicker
+    implementation "com.github.dhaval2404:imagepicker:$imagePickerVersion"
 }

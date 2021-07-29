@@ -15,6 +15,10 @@
 		android:theme="@style/Theme.AmilKHU"
 		android:usesCleartextTraffic="true"
 		tools:targetApi="Q">
+		<activity android:name=".ui.attendance.checkin.CheckInActivity"></activity>
+		<activity
+			android:name=".ui.attendance.history.HistoryAttendanceActivity"
+			android:label="@string/riwayat_kehadiran" />
 		<activity android:name=".ui.auth.login.LoginActivity" />
 		<activity android:name=".ui.main.MainActivity" />
 		<activity android:name=".ui.splashscreen.SplashScreenActivity">

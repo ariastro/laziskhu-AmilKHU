@@ -1,6 +1,5 @@
 package org.laziskhu.amilkhu.ui.auth.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
@@ -107,7 +106,8 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun saveUserData(data: LoginResponse.LoginData) {
-//        Prefs.token = data.token
+        Prefs.token = data.token
+        Prefs.userId = data.userId
         when (data.role) {
             USER_CODE -> Prefs.role = Role.USER
             ADMIN_CODE -> Prefs.role = Role.ADMIN
@@ -116,9 +116,8 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun navigateToHome() {
-        startActivity(Intent(this, MainActivity::class.java)).also {
-            finish()
-        }
+        pushActivity(MainActivity::class.java)
+        finish()
     }
 
     override fun onDestroy() {

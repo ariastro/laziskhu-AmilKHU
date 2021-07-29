@@ -59,7 +59,7 @@
 			android:elevation="0.1dp"
 			app:civ_border_width="@dimen/_5sdp"
 			app:civ_border_color="@color/white"
-			tools:src="@tools:sample/avatars"
+			android:src="@drawable/ic_avatar"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/welcoming_text" />
@@ -115,7 +115,7 @@
 				app:layout_constraintTop_toBottomOf="@+id/position">
 
 				<com.google.android.material.card.MaterialCardView
-					android:id="@+id/absen_masuk"
+					android:id="@+id/btn_check_in"
 					style="@style/LayoutClickable"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
@@ -151,7 +151,7 @@
 				</com.google.android.material.card.MaterialCardView>
 
 				<com.google.android.material.card.MaterialCardView
-					android:id="@+id/absen_keluar"
+					android:id="@+id/btn_check_out"
 					android:layout_width="0dp"
 					style="@style/LayoutClickable"
 					android:layout_height="wrap_content"
@@ -187,10 +187,9 @@
 				</com.google.android.material.card.MaterialCardView>
 
 				<com.google.android.material.card.MaterialCardView
-					android:id="@+id/history"
+					android:id="@+id/btn_history"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					style="@style/LayoutClickable"
 					android:layout_marginStart="@dimen/_4sdp"
 					android:layout_weight="1"
 					app:cardCornerRadius="@dimen/_8sdp"
@@ -239,7 +238,7 @@
 				app:layout_constraintTop_toBottomOf="@+id/layout_absensi">
 
 				<com.google.android.material.card.MaterialCardView
-					android:id="@+id/amil_tools"
+					android:id="@+id/btn_amil_tools"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="@dimen/_4sdp"
@@ -278,7 +277,7 @@
 				</com.google.android.material.card.MaterialCardView>
 
 				<com.google.android.material.card.MaterialCardView
-					android:id="@+id/admin_tools"
+					android:id="@+id/btn_admin_tools"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_marginHorizontal="@dimen/_8sdp"

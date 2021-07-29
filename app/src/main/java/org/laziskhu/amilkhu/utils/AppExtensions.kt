@@ -2,17 +2,25 @@ package org.laziskhu.amilkhu.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatEditText
+import androidx.activity.result.ActivityResultLauncher
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import cn.pedant.SweetAlert.SweetAlertDialog
+import com.github.dhaval2404.imagepicker.ImagePicker
 import es.dmoral.toasty.Toasty
+import org.laziskhu.amilkhu.utils.Constants.COUNTRY_CODE_ID
+import org.laziskhu.amilkhu.utils.Constants.LANGUAGE_ID
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
 import timber.log.Timber
+import java.util.*
 
 fun View.toVisible() {
     visibility = View.VISIBLE
@@ -63,6 +71,26 @@ fun Context.hideKeyboard(view: View) {
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
+fun Activity.imagePickerCamera(launcher: ActivityResultLauncher<Intent>) {
+    ImagePicker.with(this)
+        .crop()
+        .cameraOnly()
+        .compress(1024)
+        .createIntent { intent ->
+            launcher.launch(intent)
+        }
+}
+
+fun Fragment.imagePickerCamera(launcher: ActivityResultLauncher<Intent>) {
+    ImagePicker.with(this)
+        .crop()
+        .cameraOnly()
+        .compress(1024)
+        .createIntent { intent ->
+            launcher.launch(intent)
+        }
+}
+
 fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
         override fun afterTextChanged(editable: Editable?) {
@@ -73,4 +101,28 @@ fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
     })
+}
+
+fun <T> AppCompatActivity.pushActivity(targetClass: Class<T>) {
+    startActivity(Intent(this, targetClass))
+}
+
+fun String.toLocalDateTime(pattern: String): LocalDateTime {
+    val formatter = DateTimeFormatter.ofPattern(pattern, Locale(LANGUAGE_ID, COUNTRY_CODE_ID))
+    return LocalDateTime.parse(this, formatter)
+}
+
+fun String.toLocalDate(pattern: String): LocalDate {
+    val formatter = DateTimeFormatter.ofPattern(pattern, Locale(LANGUAGE_ID, COUNTRY_CODE_ID))
+    return LocalDate.parse(this, formatter)
+}
+
+fun LocalDate.format(pattern: String): String {
+    val formatter =  DateTimeFormatter.ofPattern(pattern, Locale(LANGUAGE_ID, COUNTRY_CODE_ID))
+    return formatter.format(this)
+}
+
+fun LocalDateTime.format(pattern: String): String {
+    val formatter = DateTimeFormatter.ofPattern(pattern, Locale(LANGUAGE_ID, COUNTRY_CODE_ID))
+    return formatter.format(this)
 }

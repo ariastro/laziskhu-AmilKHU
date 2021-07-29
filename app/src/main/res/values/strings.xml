@@ -14,4 +14,8 @@
 	<string name="amil_tools">Amil Tools</string>
 	<string name="invalid_field">%s tidak valid!</string>
 	<string name="empty_field">%s tidak boleh kosong!</string>
+	<string name="tanggal">Tanggal</string>
+	<string name="jam_kerja">Jam kerja</string>
+	<string name="jam_pulang">Jam pulang</string>
+	<string name="jam_datang">Jam datang</string>
 </resources>
