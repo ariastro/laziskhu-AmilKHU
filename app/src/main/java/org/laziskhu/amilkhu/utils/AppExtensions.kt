@@ -85,7 +85,7 @@ fun Activity.imagePickerCamera(launcher: ActivityResultLauncher<Intent>) {
     ImagePicker.with(this)
         .crop()
         .cameraOnly()
-        .compress(1024)
+        .compress(2048)
         .createIntent { intent ->
             launcher.launch(intent)
         }

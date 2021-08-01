@@ -22,35 +22,6 @@
 			app:layout_constraintTop_toTopOf="parent"
 			app:navigationIcon="@drawable/ic_baseline_keyboard_arrow_left_24" />
 
-		<ProgressBar
-			android:id="@+id/progress"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:layout_margin="@dimen/_4sdp"
-			android:indeterminate="true"
-			android:indeterminateTint="@color/colorPrimary"
-			android:indeterminateTintMode="src_atop"
-			app:layout_constraintBottom_toTopOf="@+id/tv_getting_location"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/toolbar"
-			app:layout_constraintVertical_chainStyle="packed" />
-
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/tv_getting_location"
-			style="@style/TextStyle.Regular"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="@dimen/_8sdp"
-			android:text="@string/mendapatkan_lokasi"
-			android:textColor="@color/greyText"
-			android:textSize="@dimen/_10ssp"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="@+id/progress"
-			app:layout_constraintStart_toStartOf="@+id/progress"
-			app:layout_constraintTop_toBottomOf="@+id/progress" />
-
 		<de.hdodenhof.circleimageview.CircleImageView
 			android:id="@+id/img_profile"
 			android:layout_width="@dimen/_140sdp"

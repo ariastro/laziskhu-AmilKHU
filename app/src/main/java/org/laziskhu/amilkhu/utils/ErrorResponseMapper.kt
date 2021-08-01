@@ -2,7 +2,6 @@ package org.laziskhu.amilkhu.utils
 
 import com.skydoves.sandwich.ApiErrorModelMapper
 import com.skydoves.sandwich.ApiResponse
-import com.skydoves.sandwich.message
 import com.squareup.moshi.Moshi
 import org.laziskhu.amilkhu.data.source.remote.response.ErrorResponse
 

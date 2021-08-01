@@ -27,4 +27,6 @@ interface AmilkhuDataSource {
         date: String
     ): Flow<Resource<BaseResponse>>
 
+    fun checkOut(userId: String, checkOutTime: String, latitude: String, longitude: String, date: String): Flow<Resource<BaseResponse>>
+
 }

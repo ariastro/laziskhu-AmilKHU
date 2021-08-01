@@ -28,13 +28,13 @@ interface ApiService {
     @Multipart
     @POST("attendences/checkin")
     suspend fun checkIn(
-        @Part("user_id") userId: String,
-        @Part("coming_time") checkInTime: String,
-        @Part("coming_latitude") latitude: String,
-        @Part("coming_longitude") longitude: String,
-        @Part("isInOffice") isInOffice: Boolean,
-        @Part("notes") notes: String?,
-        @Part("date") date: String,
+        @Part("user_id") userId: RequestBody,
+        @Part("coming_time") checkInTime: RequestBody,
+        @Part("coming_latitude") latitude: RequestBody,
+        @Part("coming_longitude") longitude: RequestBody,
+        @Part("isInOffice") isInOffice: RequestBody,
+        @Part("notes") notes: RequestBody?,
+        @Part("date") date: RequestBody,
         @Part photo: MultipartBody.Part
     ): ApiResponse<BaseResponse>
 

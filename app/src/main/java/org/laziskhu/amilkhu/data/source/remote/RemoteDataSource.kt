@@ -35,8 +35,17 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         date: String
     ): ApiResponse<BaseResponse> {
         val requestBody = photo.asRequestBody("multipart/form-file".toMediaTypeOrNull())
-        val photoBody = MultipartBody.Part.createFormData("photo", photo.name, requestBody)
-        return apiService.checkIn(userId, checkInTime, latitude, longitude, isInOffice, notes, date, photoBody)
+        val convertedBoolean = if (isInOffice) "1" else "0"
+        return apiService.checkIn(
+            userId = userId.toRequestBody("text/plain".toMediaTypeOrNull()),
+            checkInTime = checkInTime.toRequestBody("text/plain".toMediaTypeOrNull()),
+            latitude = latitude.toRequestBody("text/plain".toMediaTypeOrNull()),
+            longitude = longitude.toRequestBody("text/plain".toMediaTypeOrNull()),
+            isInOffice = convertedBoolean.toRequestBody("text/plain".toMediaTypeOrNull()),
+            photo = MultipartBody.Part.createFormData("photo", photo.name, requestBody),
+            notes = notes?.toRequestBody("text/plain".toMediaTypeOrNull()),
+            date = date.toRequestBody("text/plain".toMediaTypeOrNull()),
+        )
     }
 
     suspend fun checkOut(userId: String, checkOutTime: String, latitude: String, longitude: String, date: String): ApiResponse<BaseResponse> =

@@ -42,7 +42,7 @@ class ApplicationModule {
         Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory
                 .create(Moshi.Builder().add(KotlinJsonAdapterFactory()).build()).asLenient())
-            .addConverterFactory(ScalarsConverterFactory.create())
+//            .addConverterFactory(ScalarsConverterFactory.create())
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())

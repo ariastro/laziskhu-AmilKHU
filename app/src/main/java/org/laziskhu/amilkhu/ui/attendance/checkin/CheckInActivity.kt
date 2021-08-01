@@ -5,9 +5,12 @@ import android.app.Activity
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.net.toFile
 import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.common.api.ResolvableApiException
@@ -37,35 +40,70 @@ class CheckInActivity : BaseActivity() {
 
     private lateinit var photo: File
 
+    private var isCheckIn = true
+
     companion object {
         const val REQUEST_CODE_PERMISSION = 1252
+        const val EXTRA_ATTENDANCE_TYPE = "EXTRA_ATTENDANCE_TYPE"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_check_in)
 
+        getAttendanceType()
+        progress.show()
         setupUI()
-        showLoading(true)
+        setupClickListeners()
+        setupSearchWatchers()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         checkLocationPermission()
 
     }
 
+    private fun getAttendanceType() {
+        isCheckIn = intent.getBooleanExtra(EXTRA_ATTENDANCE_TYPE, true)
+    }
+
     private fun setupUI() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        if (isCheckIn) supportActionBar?.title = getString(R.string.absen_masuk) else getString(R.string.absen_keluar)
+    }
+
+    private fun setupClickListeners() {
+        binding.btnSubmit.setOnClickListener {
+            checkInAttendance(binding.notes.text.toString())
+        }
+    }
+
+    private fun setupSearchWatchers() {
+        binding.notes.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                binding.btnSubmit.isEnabled = p0.toString().isNotEmpty()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {}
+
+        })
     }
 
     private fun calculateDistance() {
         val distance = getDistance(latitude, LAZISKHU_LATITUDE, longitude, LAZISKHU_LONGITUDE)
-        if (distance <= MAX_DISTANCE) {
-            binding.notesLayout.toVisible()
+        if (distance <= 1000000000000) {
             isInOffice = true
-        } else {
+            binding.btnSubmit.toGone()
             binding.notesLayout.toGone()
-//            checkInAttendance(null)
+            binding.imgProfile.toGone()
+            logDebug("data: $photo, $latitude, $longitude, $isInOffice")
+            checkInAttendance(null)
+        } else {
+            binding.notesLayout.toVisible()
+            binding.imgProfile.toVisible()
+            binding.btnSubmit.toVisible()
             isInOffice = false
         }
     }
@@ -85,16 +123,31 @@ class CheckInActivity : BaseActivity() {
                     Status.ERROR -> {
                         progress.dismiss()
                         showErrorToasty(it.message.toString())
+                        finish()
                     }
                 }
             }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        binding.progress.isGone = !isLoading
-        binding.tvGettingLocation.isGone = !isLoading
-        binding.imgProfile.isGone = isLoading
-        binding.btnSubmit.isGone = isLoading
+    private fun checkOutAttendance() {
+        viewModel.checkOut(latitude.toString(), longitude.toString())
+            .observe(this) {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        progress.dismiss()
+                        showSuccessToasty(it.data?.message.toString())
+                        finish()
+                    }
+                    Status.LOADING -> {
+                        progress.show()
+                    }
+                    Status.ERROR -> {
+                        progress.dismiss()
+                        showErrorToasty(it.message.toString())
+                        finish()
+                    }
+                }
+            }
     }
 
     private fun checkLocationPermission() {
@@ -136,7 +189,11 @@ class CheckInActivity : BaseActivity() {
                 if (result != null) {
                     latitude = task.result.latitude
                     longitude = task.result.longitude
-                    imagePickerCamera(checkInLauncher)
+                    if (isCheckIn) {
+                        imagePickerCamera(checkInLauncher)
+                    } else {
+                        checkOutAttendance()
+                    }
                 } else {
                     val locationRequest = LocationRequest.create()
                     locationRequest.interval = 5000
@@ -151,7 +208,11 @@ class CheckInActivity : BaseActivity() {
                             val location = locationResult.lastLocation
                             latitude = location.latitude
                             longitude = location.longitude
-                            imagePickerCamera(checkInLauncher)
+                            if (isCheckIn) {
+                                imagePickerCamera(checkInLauncher)
+                            } else {
+                                checkOutAttendance()
+                            }
                             fusedLocationClient.removeLocationUpdates(locationCallback)
                         }
                     }
@@ -167,23 +228,24 @@ class CheckInActivity : BaseActivity() {
         }
     }
 
-    private val gpsLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+    private val gpsLauncher =
+        registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 getDeviceLocation()
             }
         }
 
-    private val checkInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    private val checkInLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             val resultCode = result.resultCode
             val data = result.data
             if (resultCode == Activity.RESULT_OK) {
                 val fileUri = data?.data!!
-                val path = fileUri.path
-                photo = (File(path!!))
+                photo = fileUri.toFile()
                 binding.imgProfile.setImageURI(fileUri)
                 calculateDistance()
-                showLoading(false)
             } else {
+                progress.dismiss()
                 onBackPressed()
             }
         }

@@ -1,5 +1,6 @@
 package org.laziskhu.amilkhu.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isGone
@@ -40,7 +41,15 @@ class MainActivity : BaseActivity() {
 
     private fun setupClickListeners() {
         binding.btnCheckIn.setOnClickListener {
-            pushActivity(CheckInActivity::class.java)
+            startActivity(Intent(this, CheckInActivity::class.java).apply {
+                putExtra(CheckInActivity.EXTRA_ATTENDANCE_TYPE, true)
+            })
+        }
+
+        binding.btnCheckOut.setOnClickListener {
+            startActivity(Intent(this, CheckInActivity::class.java).apply {
+                putExtra(CheckInActivity.EXTRA_ATTENDANCE_TYPE, false)
+            })
         }
 
         binding.btnHistory.setOnClickListener {

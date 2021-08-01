@@ -74,4 +74,16 @@ class AmilkhuRepository @Inject constructor(
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
 
+    override fun checkOut(userId: String, checkOutTime: String, latitude: String, longitude: String, date: String): Flow<Resource<BaseResponse>> = flow {
+        remoteDataSource.checkOut(userId, checkOutTime, latitude, longitude, date).let {
+            it.suspendOnSuccess {
+                emit(Resource.success(data))
+            }.suspendOnError {
+                emit(Resource.error(map(ErrorResponseMapper).message, BaseResponse()))
+            }.suspendOnException {
+                emit(Resource.error(message, BaseResponse()))
+            }
+        }
+    }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
+
 }

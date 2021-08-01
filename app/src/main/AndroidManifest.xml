@@ -20,8 +20,7 @@
 		android:usesCleartextTraffic="true"
 		tools:targetApi="Q">
 		<activity
-			android:name=".ui.attendance.checkin.CheckInActivity"
-			android:label="@string/absen_masuk"/>
+			android:name=".ui.attendance.checkin.CheckInActivity" />
 		<activity
 			android:name=".ui.attendance.history.HistoryAttendanceActivity"
 			android:label="@string/riwayat_kehadiran" />
