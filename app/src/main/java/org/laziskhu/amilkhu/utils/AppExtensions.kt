@@ -180,3 +180,6 @@ private fun deg2rad(deg: Double): Double {
 private fun rad2deg(rad: Double): Double {
     return rad * 180.0 / Math.PI
 }
+
+fun getCurrentDate() = LocalDate.now().format(Constants.timeStampFormat)
+fun getCurrentTime() = LocalDateTime.now().format(Constants.timeOnlyFormat)

@@ -17,6 +17,7 @@ import org.laziskhu.amilkhu.ui.amiltools.AmilToolsBottomSheetFragment
 import org.laziskhu.amilkhu.ui.attendance.AttendanceActivity
 import org.laziskhu.amilkhu.ui.attendance.history.HistoryAttendanceActivity
 import org.laziskhu.amilkhu.utils.Role
+import org.laziskhu.amilkhu.utils.getCurrentDate
 import org.laziskhu.amilkhu.utils.pushActivity
 import org.laziskhu.amilkhu.utils.showErrorToasty
 import org.laziskhu.amilkhu.vo.Status
@@ -26,6 +27,8 @@ class MainActivity : BaseActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
+
+    private val currentDate = getCurrentDate()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,22 +47,26 @@ class MainActivity : BaseActivity() {
 
     private fun setupClickListeners() {
         binding.btnCheckIn.setOnClickListener {
-            if (!Prefs.isAttend) {
+            if (Prefs.isCheckedIn && Prefs.checkInDate == currentDate) {
+                showErrorToasty(getString(R.string.already_checkin))
+            } else {
                 startActivity(Intent(this, AttendanceActivity::class.java).apply {
                     putExtra(AttendanceActivity.EXTRA_ATTENDANCE_TYPE, true)
                 })
-            } else {
-                showErrorToasty(getString(R.string.already_checkin))
             }
         }
 
         binding.btnCheckOut.setOnClickListener {
-            if (Prefs.isAttend) {
+            if (Prefs.isCheckedIn && Prefs.checkInDate == currentDate && !Prefs.isCheckedOut) {
                 startActivity(Intent(this, AttendanceActivity::class.java).apply {
                     putExtra(AttendanceActivity.EXTRA_ATTENDANCE_TYPE, false)
                 })
             } else {
-                showErrorToasty(getString(R.string.already_checkout))
+                if (Prefs.checkInDate == currentDate) {
+                    showErrorToasty(getString(R.string.already_checkout))
+                } else {
+                    showErrorToasty(getString(R.string.not_absent_yet))
+                }
             }
         }
 

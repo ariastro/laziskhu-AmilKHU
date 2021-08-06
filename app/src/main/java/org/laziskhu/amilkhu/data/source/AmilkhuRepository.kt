@@ -5,10 +5,7 @@ import org.laziskhu.amilkhu.vo.Resource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.*
 import org.laziskhu.amilkhu.data.source.remote.RemoteDataSource
-import org.laziskhu.amilkhu.data.source.remote.response.BaseResponse
-import org.laziskhu.amilkhu.data.source.remote.response.GetHistoryAttendanceResponse
-import org.laziskhu.amilkhu.data.source.remote.response.GetProfileResponse
-import org.laziskhu.amilkhu.data.source.remote.response.LoginResponse
+import org.laziskhu.amilkhu.data.source.remote.response.*
 import org.laziskhu.amilkhu.utils.ErrorResponseMapper
 import org.laziskhu.amilkhu.utils.logDebug
 import java.io.File
@@ -24,7 +21,7 @@ class AmilkhuRepository @Inject constructor(
         response.suspendOnSuccess {
             emit(Resource.success(data))
         }.suspendOnError {
-            emit(Resource.error(map(ErrorResponseMapper).message, LoginResponse()))
+            emit(Resource.error(map(ErrorResponseMapper)?.message, LoginResponse()))
         }.suspendOnException {
             emit(Resource.error(message, LoginResponse()))
         }
@@ -35,7 +32,7 @@ class AmilkhuRepository @Inject constructor(
         response.suspendOnSuccess {
             emit(Resource.success(data))
         }.suspendOnError {
-            emit(Resource.error(map(ErrorResponseMapper).message, GetProfileResponse()))
+            emit(Resource.error(map(ErrorResponseMapper)?.message, GetProfileResponse()))
         }.suspendOnException {
             emit(Resource.error(message, GetProfileResponse()))
         }
@@ -46,7 +43,7 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper).message, GetHistoryAttendanceResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message, GetHistoryAttendanceResponse()))
             }.suspendOnException {
                 emit(Resource.error(message, GetHistoryAttendanceResponse()))
             }
@@ -67,7 +64,7 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper).message, BaseResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message, BaseResponse()))
             }.suspendOnException {
                 emit(Resource.error(message, BaseResponse()))
             }
@@ -79,9 +76,21 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper).message, BaseResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message, BaseResponse()))
             }.suspendOnException {
                 emit(Resource.error(message, BaseResponse()))
+            }
+        }
+    }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
+
+    override fun getWaitingAttendance(date: String): Flow<Resource<GetWaitingAttendanceResponse>> = flow {
+        remoteDataSource.getWaitingAttendance(date).let {
+            it.suspendOnSuccess {
+                emit(Resource.success(data))
+            }.suspendOnError {
+                emit(Resource.error(message(), GetWaitingAttendanceResponse()))
+            }.suspendOnException {
+                emit(Resource.error(message, GetWaitingAttendanceResponse()))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)

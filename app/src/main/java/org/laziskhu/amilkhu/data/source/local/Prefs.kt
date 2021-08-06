@@ -9,6 +9,8 @@ object Prefs : KotprefModel() {
     var token by nullableStringPref(null)
     var role by enumValuePref(Role.USER)
 
-    var isAttend by booleanPref(false)
+    var isCheckedIn by booleanPref(false)
+    var isCheckedOut by booleanPref(false)
+    var checkInDate by nullableStringPref(null)
 
 }

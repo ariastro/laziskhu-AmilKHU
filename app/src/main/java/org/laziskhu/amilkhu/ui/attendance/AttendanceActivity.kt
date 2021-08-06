@@ -5,8 +5,6 @@ import android.app.Activity
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -24,6 +22,7 @@ import org.laziskhu.amilkhu.utils.Constants.LAZISKHU_LATITUDE
 import org.laziskhu.amilkhu.utils.Constants.LAZISKHU_LONGITUDE
 import org.laziskhu.amilkhu.utils.Constants.MAX_DISTANCE
 import org.laziskhu.amilkhu.vo.Status
+import org.threeten.bp.LocalDate
 import java.io.File
 
 class AttendanceActivity : BaseActivity() {
@@ -99,6 +98,7 @@ class AttendanceActivity : BaseActivity() {
             binding.imgProfile.toVisible()
             binding.btnSubmit.toVisible()
             isInOffice = false
+            progress.dismiss()
         }
     }
 
@@ -109,7 +109,9 @@ class AttendanceActivity : BaseActivity() {
                     Status.SUCCESS -> {
                         progress.dismiss()
                         showSuccessToasty(it.data?.message.toString())
-                        Prefs.isAttend = true
+                        Prefs.isCheckedIn = true
+                        Prefs.checkInDate = getCurrentDate()
+                        Prefs.isCheckedOut = false
                         finish()
                     }
                     Status.LOADING -> {
@@ -131,7 +133,8 @@ class AttendanceActivity : BaseActivity() {
                     Status.SUCCESS -> {
                         progress.dismiss()
                         showSuccessToasty(it.data?.message.toString())
-                        Prefs.isAttend = false
+                        Prefs.isCheckedIn = false
+                        Prefs.isCheckedOut = true
                         finish()
                     }
                     Status.LOADING -> {

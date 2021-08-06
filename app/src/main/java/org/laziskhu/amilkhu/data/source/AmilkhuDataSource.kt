@@ -1,10 +1,7 @@
 package org.laziskhu.amilkhu.data.source
 
 import kotlinx.coroutines.flow.Flow
-import org.laziskhu.amilkhu.data.source.remote.response.BaseResponse
-import org.laziskhu.amilkhu.data.source.remote.response.GetHistoryAttendanceResponse
-import org.laziskhu.amilkhu.data.source.remote.response.GetProfileResponse
-import org.laziskhu.amilkhu.data.source.remote.response.LoginResponse
+import org.laziskhu.amilkhu.data.source.remote.response.*
 import org.laziskhu.amilkhu.vo.Resource
 import java.io.File
 
@@ -28,5 +25,7 @@ interface AmilkhuDataSource {
     ): Flow<Resource<BaseResponse>>
 
     fun checkOut(userId: String, checkOutTime: String, latitude: String, longitude: String, date: String): Flow<Resource<BaseResponse>>
+
+    fun getWaitingAttendance(date: String): Flow<Resource<GetWaitingAttendanceResponse>>
 
 }

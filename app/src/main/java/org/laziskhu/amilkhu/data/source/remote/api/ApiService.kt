@@ -3,10 +3,7 @@ package org.laziskhu.amilkhu.data.source.remote.api
 import com.skydoves.sandwich.ApiResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.laziskhu.amilkhu.data.source.remote.response.BaseResponse
-import org.laziskhu.amilkhu.data.source.remote.response.GetHistoryAttendanceResponse
-import org.laziskhu.amilkhu.data.source.remote.response.GetProfileResponse
-import org.laziskhu.amilkhu.data.source.remote.response.LoginResponse
+import org.laziskhu.amilkhu.data.source.remote.response.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -48,5 +45,10 @@ interface ApiService {
         @Field("date") date: String
     ): ApiResponse<BaseResponse>
 
+    @GET("attendences")
+    suspend fun getWaitingAttendance(
+        @Query("date") date: String,
+        @Query("status") status: String
+    ): ApiResponse<GetWaitingAttendanceResponse>
 
 }

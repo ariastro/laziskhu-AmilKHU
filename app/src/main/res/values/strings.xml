@@ -36,4 +36,5 @@
 	<string name="company_profile">Company Profile</string>
 	<string name="pengumuman">Pengumuman</string>
 	<string name="lokasi">Lokasi</string>
+	<string name="not_absent_yet">Anda belum Absen Masuk!</string>
 </resources>
