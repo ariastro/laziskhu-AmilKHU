@@ -1,4 +1,4 @@
-package org.laziskhu.amilkhu.ui.attendance.checkin
+package org.laziskhu.amilkhu.ui.attendance
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -14,7 +14,7 @@ import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
-class CheckInViewModel @Inject constructor(private val repository: AmilkhuRepository) : ViewModel() {
+class AttendanceViewModel @Inject constructor(private val repository: AmilkhuRepository) : ViewModel() {
 
     fun checkIn(latitude: String, longitude: String, isInOffice: Boolean, notes: String?, photo: File) = repository.checkIn(
         userId = Prefs.userId,

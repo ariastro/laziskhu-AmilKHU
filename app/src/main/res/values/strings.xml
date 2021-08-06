@@ -23,4 +23,10 @@
 	<string name="mendapatkan_lokasi">Mendapatkan lokasi…</string>
 	<string name="catatan">Catatan</string>
 	<string name="submit">Submit</string>
+	<string name="already_checkin">Anda sudah absen!</string>
+	<string name="already_checkout">Anda sudah absen pulang!</string>
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="payment_gateway">Payment Gateway</string>
+	<string name="kalkulator_zakat">Kalkulator Zakat</string>
 </resources>

@@ -9,4 +9,6 @@ object Prefs : KotprefModel() {
     var token by nullableStringPref(null)
     var role by enumValuePref(Role.USER)
 
+    var isAttend by booleanPref(false)
+
 }

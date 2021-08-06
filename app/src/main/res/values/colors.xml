@@ -6,6 +6,7 @@
 
 	<color name="orangeBg">#FFA36D</color>
 	<color name="blueBg">#70CFFF</color>
+	<color name="darkerBlue">#67A0CD</color>
 
 	<color name="black">#FF000000</color>
 	<color name="white">#FFFFFFFF</color>
@@ -13,6 +14,12 @@
 	<color name="greyText">#4D4D4D</color>
 	<color name="lightGrey">#747476</color>
 	<color name="lightGrey2">#BDBDBD</color>
+
+	<color name="gray1">#292929</color>
+	<color name="gray2">#5C5C5C</color>
+	<color name="gray3">#8F8F8F</color>
+	<color name="gray4">#C2C2C2</color>
+	<color name="gray5">#F5F5F5</color>
 
 	<color name="green">#5bcd90</color>
 	<color name="red">#ef5061</color>

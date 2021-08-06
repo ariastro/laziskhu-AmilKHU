@@ -1,4 +1,4 @@
-package org.laziskhu.amilkhu.ui.attendance.checkin
+package org.laziskhu.amilkhu.ui.attendance
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -11,13 +11,14 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.net.toFile
-import androidx.core.view.isGone
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import org.laziskhu.amilkhu.R
 import org.laziskhu.amilkhu.base.BaseActivity
-import org.laziskhu.amilkhu.databinding.ActivityCheckInBinding
+import org.laziskhu.amilkhu.data.source.local.Prefs
+import org.laziskhu.amilkhu.databinding.ActivityAttendanceBinding
 import org.laziskhu.amilkhu.utils.*
 import org.laziskhu.amilkhu.utils.Constants.LAZISKHU_LATITUDE
 import org.laziskhu.amilkhu.utils.Constants.LAZISKHU_LONGITUDE
@@ -25,11 +26,11 @@ import org.laziskhu.amilkhu.utils.Constants.MAX_DISTANCE
 import org.laziskhu.amilkhu.vo.Status
 import java.io.File
 
-class CheckInActivity : BaseActivity() {
+class AttendanceActivity : BaseActivity() {
 
-    private var _binding: ActivityCheckInBinding? = null
+    private var _binding: ActivityAttendanceBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: CheckInViewModel by viewModels()
+    private val viewModel: AttendanceViewModel by viewModels()
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
@@ -49,7 +50,7 @@ class CheckInActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = DataBindingUtil.setContentView(this, R.layout.activity_check_in)
+        _binding = DataBindingUtil.setContentView(this, R.layout.activity_attendance)
 
         getAttendanceType()
         progress.show()
@@ -79,21 +80,14 @@ class CheckInActivity : BaseActivity() {
     }
 
     private fun setupSearchWatchers() {
-        binding.notes.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                binding.btnSubmit.isEnabled = p0.toString().isNotEmpty()
-            }
-
-            override fun afterTextChanged(p0: Editable?) {}
-
-        })
+        binding.notes.doOnTextChanged { text, _, _, _ ->
+            binding.btnSubmit.isEnabled = text.toString().isNotEmpty()
+        }
     }
 
     private fun calculateDistance() {
         val distance = getDistance(latitude, LAZISKHU_LATITUDE, longitude, LAZISKHU_LONGITUDE)
-        if (distance <= 1000000000000) {
+        if (distance <= MAX_DISTANCE) {
             isInOffice = true
             binding.btnSubmit.toGone()
             binding.notesLayout.toGone()
@@ -115,6 +109,7 @@ class CheckInActivity : BaseActivity() {
                     Status.SUCCESS -> {
                         progress.dismiss()
                         showSuccessToasty(it.data?.message.toString())
+                        Prefs.isAttend = true
                         finish()
                     }
                     Status.LOADING -> {
@@ -136,6 +131,7 @@ class CheckInActivity : BaseActivity() {
                     Status.SUCCESS -> {
                         progress.dismiss()
                         showSuccessToasty(it.data?.message.toString())
+                        Prefs.isAttend = false
                         finish()
                     }
                     Status.LOADING -> {

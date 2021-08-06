@@ -3,7 +3,6 @@ package org.laziskhu.amilkhu.ui.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.GenericTransitionOptions
 import org.laziskhu.amilkhu.R
@@ -12,10 +11,12 @@ import org.laziskhu.amilkhu.data.source.local.Prefs
 import org.laziskhu.amilkhu.data.source.remote.response.GetProfileResponse
 import org.laziskhu.amilkhu.databinding.ActivityMainBinding
 import org.laziskhu.amilkhu.di.module.GlideApp
-import org.laziskhu.amilkhu.ui.attendance.checkin.CheckInActivity
+import org.laziskhu.amilkhu.ui.amiltools.AmilToolsBottomSheetFragment
+import org.laziskhu.amilkhu.ui.attendance.AttendanceActivity
 import org.laziskhu.amilkhu.ui.attendance.history.HistoryAttendanceActivity
 import org.laziskhu.amilkhu.utils.Role
 import org.laziskhu.amilkhu.utils.pushActivity
+import org.laziskhu.amilkhu.utils.showErrorToasty
 import org.laziskhu.amilkhu.vo.Status
 
 class MainActivity : BaseActivity() {
@@ -41,19 +42,31 @@ class MainActivity : BaseActivity() {
 
     private fun setupClickListeners() {
         binding.btnCheckIn.setOnClickListener {
-            startActivity(Intent(this, CheckInActivity::class.java).apply {
-                putExtra(CheckInActivity.EXTRA_ATTENDANCE_TYPE, true)
-            })
+            if (!Prefs.isAttend) {
+                startActivity(Intent(this, AttendanceActivity::class.java).apply {
+                    putExtra(AttendanceActivity.EXTRA_ATTENDANCE_TYPE, true)
+                })
+            } else {
+                showErrorToasty(getString(R.string.already_checkin))
+            }
         }
 
         binding.btnCheckOut.setOnClickListener {
-            startActivity(Intent(this, CheckInActivity::class.java).apply {
-                putExtra(CheckInActivity.EXTRA_ATTENDANCE_TYPE, false)
-            })
+            if (Prefs.isAttend) {
+                startActivity(Intent(this, AttendanceActivity::class.java).apply {
+                    putExtra(AttendanceActivity.EXTRA_ATTENDANCE_TYPE, false)
+                })
+            } else {
+                showErrorToasty(getString(R.string.already_checkout))
+            }
         }
 
         binding.btnHistory.setOnClickListener {
             pushActivity(HistoryAttendanceActivity::class.java)
+        }
+
+        binding.btnAmilTools.setOnClickListener {
+            AmilToolsBottomSheetFragment().show(supportFragmentManager, AmilToolsBottomSheetFragment.TAG)
         }
 
     }
