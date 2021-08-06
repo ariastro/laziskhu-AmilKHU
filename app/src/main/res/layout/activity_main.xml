@@ -155,7 +155,7 @@
 					android:layout_width="0dp"
 					style="@style/LayoutClickable"
 					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="@dimen/_8sdp"
+					android:layout_marginHorizontal="@dimen/_4sdp"
 					android:layout_weight="1"
 					app:cardCornerRadius="@dimen/_8sdp"
 					app:cardElevation="0dp">
@@ -280,7 +280,7 @@
 					android:id="@+id/btn_admin_tools"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="@dimen/_8sdp"
+					android:layout_marginHorizontal="@dimen/_4sdp"
 					android:layout_weight="1"
 					style="@style/LayoutClickable"
 					app:cardCornerRadius="@dimen/_8sdp"

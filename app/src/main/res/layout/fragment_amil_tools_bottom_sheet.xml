@@ -70,7 +70,7 @@
 				android:id="@+id/btn_payment_gateway"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="@dimen/_8sdp"
+				android:layout_marginStart="@dimen/_4sdp"
 				android:layout_weight="1"
 				app:cardCornerRadius="@dimen/_8sdp"
 				app:cardElevation="0dp">

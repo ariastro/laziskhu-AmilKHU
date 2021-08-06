@@ -59,7 +59,7 @@
 						android:gravity="center"
 						android:text="@string/kehadiran_harian"
 						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
+						android:textSize="@dimen/_9ssp" />
 
 				</LinearLayout>
 
@@ -69,7 +69,7 @@
 				android:id="@+id/btn_acceptance"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="@dimen/_8sdp"
+				android:layout_marginHorizontal="@dimen/_4sdp"
 				android:layout_weight="1"
 				app:cardCornerRadius="@dimen/_8sdp"
 				app:cardElevation="0dp">
@@ -97,7 +97,7 @@
 						android:gravity="center"
 						android:text="@string/persetujuan"
 						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
+						android:textSize="@dimen/_9ssp" />
 
 				</LinearLayout>
 
@@ -107,7 +107,7 @@
 				android:id="@+id/btn_amil_data"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="@dimen/_8sdp"
+				android:layout_marginStart="@dimen/_4sdp"
 				android:layout_weight="1"
 				app:cardCornerRadius="@dimen/_8sdp"
 				app:cardElevation="0dp">
@@ -135,7 +135,7 @@
 						android:gravity="center"
 						android:text="@string/data_amil"
 						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
+						android:textSize="@dimen/_9ssp" />
 
 				</LinearLayout>
 
@@ -183,7 +183,7 @@
 						android:gravity="center"
 						android:text="@string/tambah_admin"
 						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
+						android:textSize="@dimen/_9ssp" />
 
 				</LinearLayout>
 
@@ -193,7 +193,7 @@
 				android:id="@+id/btn_company_profile"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="@dimen/_8sdp"
+				android:layout_marginHorizontal="@dimen/_4sdp"
 				android:layout_weight="1"
 				app:cardCornerRadius="@dimen/_8sdp"
 				app:cardElevation="0dp">
@@ -221,7 +221,7 @@
 						android:gravity="center"
 						android:text="@string/company_profile"
 						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
+						android:textSize="@dimen/_9ssp" />
 
 				</LinearLayout>
 
@@ -231,7 +231,7 @@
 				android:id="@+id/btn_announcement"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="@dimen/_8sdp"
+				android:layout_marginStart="@dimen/_4sdp"
 				android:layout_weight="1"
 				app:cardCornerRadius="@dimen/_8sdp"
 				app:cardElevation="0dp">
@@ -258,7 +258,7 @@
 						android:gravity="center"
 						android:text="@string/pengumuman"
 						android:textColor="@color/greyText"
-						android:textSize="@dimen/_10ssp" />
+						android:textSize="@dimen/_9ssp" />
 
 				</LinearLayout>
 
