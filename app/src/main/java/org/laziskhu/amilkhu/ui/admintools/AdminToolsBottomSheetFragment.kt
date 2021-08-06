@@ -6,16 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import org.laziskhu.amilkhu.R
-import org.laziskhu.amilkhu.databinding.FragmentAmilToolsBottomSheetBinding
+import org.laziskhu.amilkhu.databinding.FragmentAdminToolsBottomSheetBinding
 
 class AdminToolsBottomSheetFragment : SuperBottomSheetFragment() {
 
-    private var _binding: FragmentAmilToolsBottomSheetBinding? = null
+    private var _binding: FragmentAdminToolsBottomSheetBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentAmilToolsBottomSheetBinding.inflate(layoutInflater)
+        _binding = FragmentAdminToolsBottomSheetBinding.inflate(layoutInflater)
         return _binding?.root
     }
 

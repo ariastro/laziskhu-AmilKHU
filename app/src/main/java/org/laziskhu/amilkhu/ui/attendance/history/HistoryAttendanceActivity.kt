@@ -27,6 +27,10 @@ class HistoryAttendanceActivity : BaseActivity() {
     private fun setupUI() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.swipeRefreshLayout.isRefreshing = false
+            getHistory()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -14,7 +14,7 @@
 
 		<View
 			android:id="@+id/view"
-			android:layout_width="@dimen/_26sdp"
+			android:layout_width="@dimen/_32sdp"
 			android:layout_height="@dimen/_2sdp"
 			android:layout_marginTop="@dimen/_8sdp"
 			android:background="@drawable/rounded_top_bottomsheet" />
@@ -22,10 +22,10 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="@dimen/_16sdp"
 			android:layout_marginHorizontal="@dimen/_8sdp"
+			android:layout_marginTop="@dimen/_16sdp"
 			android:orientation="horizontal"
-			android:padding="@dimen/_8sdp">
+			android:padding="@dimen/_4sdp">
 
 			<com.google.android.material.card.MaterialCardView
 				android:id="@+id/btn_daily_attendance"
@@ -147,8 +147,9 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginHorizontal="@dimen/_8sdp"
+			android:layout_marginBottom="@dimen/_8sdp"
 			android:orientation="horizontal"
-			android:padding="@dimen/_8sdp">
+			android:padding="@dimen/_4sdp">
 
 			<com.google.android.material.card.MaterialCardView
 				android:id="@+id/btn_add_admin"
