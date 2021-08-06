@@ -29,4 +29,10 @@
 	<string name="hello_blank_fragment">Hello blank fragment</string>
 	<string name="payment_gateway">Payment Gateway</string>
 	<string name="kalkulator_zakat">Kalkulator Zakat</string>
+	<string name="kehadiran_harian">Kehadiran Harian</string>
+	<string name="persetujuan">Persetujuan</string>
+	<string name="data_amil">Data Amil</string>
+	<string name="tambah_admin">Tambah Admin</string>
+	<string name="company_profile">Company Profile</string>
+	<string name="pengumuman">Pengumuman</string>
 </resources>

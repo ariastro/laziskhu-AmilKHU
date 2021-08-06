@@ -29,7 +29,7 @@
 			android:padding="@dimen/_8sdp">
 
 			<com.google.android.material.card.MaterialCardView
-				android:id="@+id/btn_check_in"
+				android:id="@+id/btn_calculator"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginEnd="@dimen/_4sdp"
@@ -67,7 +67,7 @@
 			</com.google.android.material.card.MaterialCardView>
 
 			<com.google.android.material.card.MaterialCardView
-				android:id="@+id/btn_check_out"
+				android:id="@+id/btn_payment_gateway"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginHorizontal="@dimen/_8sdp"

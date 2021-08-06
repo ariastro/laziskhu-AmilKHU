@@ -3,6 +3,7 @@ package org.laziskhu.amilkhu.ui.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.GenericTransitionOptions
 import org.laziskhu.amilkhu.R
@@ -11,6 +12,7 @@ import org.laziskhu.amilkhu.data.source.local.Prefs
 import org.laziskhu.amilkhu.data.source.remote.response.GetProfileResponse
 import org.laziskhu.amilkhu.databinding.ActivityMainBinding
 import org.laziskhu.amilkhu.di.module.GlideApp
+import org.laziskhu.amilkhu.ui.admintools.AdminToolsBottomSheetFragment
 import org.laziskhu.amilkhu.ui.amiltools.AmilToolsBottomSheetFragment
 import org.laziskhu.amilkhu.ui.attendance.AttendanceActivity
 import org.laziskhu.amilkhu.ui.attendance.history.HistoryAttendanceActivity
@@ -67,6 +69,10 @@ class MainActivity : BaseActivity() {
 
         binding.btnAmilTools.setOnClickListener {
             AmilToolsBottomSheetFragment().show(supportFragmentManager, AmilToolsBottomSheetFragment.TAG)
+        }
+
+        binding.btnAdminTools.setOnClickListener {
+            AdminToolsBottomSheetFragment().show(supportFragmentManager, AdminToolsBottomSheetFragment.TAG)
         }
 
     }
