@@ -117,6 +117,10 @@ fun <T> AppCompatActivity.pushActivity(targetClass: Class<T>) {
     startActivity(Intent(this, targetClass))
 }
 
+fun <T> Fragment.pushActivity(targetClass: Class<T>) {
+    startActivity(Intent(requireContext(), targetClass))
+}
+
 fun String.toLocalDateTime(pattern: String): LocalDateTime {
     val formatter = DateTimeFormatter.ofPattern(pattern, Locale(LANGUAGE_ID, COUNTRY_CODE_ID))
     return LocalDateTime.parse(this, formatter)

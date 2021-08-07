@@ -19,7 +19,8 @@
 		android:theme="@style/Theme.AmilKHU"
 		android:usesCleartextTraffic="true"
 		tools:targetApi="Q">
-		<activity android:name=".ui.admintools.acceptattendance.AcceptAttendanceActivity"></activity>
+		<activity android:name=".ui.admintools.acceptattendance.AcceptAttendanceActivity"
+			android:label="@string/persetujuan"/>
 		<activity android:name=".ui.attendance.AttendanceActivity" />
 		<activity
 			android:name=".ui.attendance.history.HistoryAttendanceActivity"

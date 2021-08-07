@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import org.laziskhu.amilkhu.R
 import org.laziskhu.amilkhu.databinding.FragmentAdminToolsBottomSheetBinding
+import org.laziskhu.amilkhu.ui.admintools.acceptattendance.AcceptAttendanceActivity
+import org.laziskhu.amilkhu.utils.pushActivity
 
 class AdminToolsBottomSheetFragment : SuperBottomSheetFragment() {
 
@@ -22,6 +24,15 @@ class AdminToolsBottomSheetFragment : SuperBottomSheetFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupClickListeners()
+
+    }
+
+    private fun setupClickListeners() {
+        binding.btnAcceptance.setOnClickListener {
+            dismiss()
+            pushActivity(AcceptAttendanceActivity::class.java)
+        }
     }
 
     override fun getCornerRadius() = requireContext().resources.getDimension(R.dimen.sheet_rounded_corner)

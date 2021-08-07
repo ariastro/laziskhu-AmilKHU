@@ -231,6 +231,9 @@ class AttendanceActivity : BaseActivity() {
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 getDeviceLocation()
+            } else {
+                progress.dismiss()
+                finish()
             }
         }
 

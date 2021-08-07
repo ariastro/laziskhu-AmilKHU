@@ -29,6 +29,8 @@ object Constants {
     const val DITERIMA = "Diterima"
     const val DITOLAK = "Ditolak"
 
+    const val IN_OFFICE_CODE = "1"
+
     const val LAZISKHU_LATITUDE = -7.966976
     const val LAZISKHU_LONGITUDE = 112.660932
 

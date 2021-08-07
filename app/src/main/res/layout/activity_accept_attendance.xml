@@ -31,7 +31,7 @@
 			android:layout_height="wrap_content"
 			android:clipToPadding="false"
 			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-			tools:listitem="@layout/item_accept_attendance" />
+			tools:listitem="@layout/item_waiting_attendance" />
 
 	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

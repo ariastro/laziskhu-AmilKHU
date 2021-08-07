@@ -37,4 +37,6 @@
 	<string name="pengumuman">Pengumuman</string>
 	<string name="lokasi">Lokasi</string>
 	<string name="not_absent_yet">Anda belum Absen Masuk!</string>
+	<string name="di_kantor">Di Kantor</string>
+	<string name="di_luar_kantor">Di Luar Kantor</string>
 </resources>

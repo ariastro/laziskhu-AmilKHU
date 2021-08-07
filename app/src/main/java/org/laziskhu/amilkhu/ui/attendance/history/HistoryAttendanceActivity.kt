@@ -51,10 +51,10 @@ class HistoryAttendanceActivity : BaseActivity() {
                 Status.SUCCESS -> {
                     progress.dismiss()
                     adapter = HistoryAdapter {}
-                    binding.rvHistory.setHasFixedSize(true)
-                    binding.rvHistory.adapter = adapter
                     adapter.submitList(it.data?.data)
                     adapter.notifyDataSetChanged()
+                    binding.rvHistory.adapter = adapter
+                    binding.rvHistory.setHasFixedSize(true)
                 }
             }
         }
