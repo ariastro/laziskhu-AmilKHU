@@ -51,4 +51,11 @@ interface ApiService {
         @Query("status") status: String
     ): ApiResponse<GetWaitingAttendanceResponse>
 
+    @FormUrlEncoded
+    @POST("attendences/updateStatus")
+    suspend fun updateAttendanceStatus(
+        @Field("id") id: String,
+        @Field("status") status: String
+    ): ApiResponse<BaseResponse>
+
 }

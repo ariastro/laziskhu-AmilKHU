@@ -39,4 +39,9 @@
 	<string name="not_absent_yet">Anda belum Absen Masuk!</string>
 	<string name="di_kantor">Di Kantor</string>
 	<string name="di_luar_kantor">Di Luar Kantor</string>
+	<string name="setujui_kehadiran">Setujui Kehadiran</string>
+	<string name="setujui">Setujui</string>
+	<string name="tolak">Tolak</string>
+	<string name="apakah_anda_yakin_untuk_menyetujui_absensi_kehadiran_ini">Apakah anda yakin untuk menyetujui absensi kehadiran ini?</string>
+	<string name="accepted_attendance">Kehadiran berhasil disetujui</string>
 </resources>

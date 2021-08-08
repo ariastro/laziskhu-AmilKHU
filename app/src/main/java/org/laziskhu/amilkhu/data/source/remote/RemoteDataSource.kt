@@ -52,4 +52,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     suspend fun getWaitingAttendance(date: String): ApiResponse<GetWaitingAttendanceResponse> =
         apiService.getWaitingAttendance(date, WAITING)
 
+    suspend fun updateAttendanceStatus(id: String, status: String): ApiResponse<BaseResponse> =
+        apiService.updateAttendanceStatus(id, status)
+
 }

@@ -13,19 +13,14 @@ interface AmilkhuDataSource {
 
     fun getHistoryAttendance(id: String): Flow<Resource<GetHistoryAttendanceResponse>>
 
-    fun checkIn(
-        userId: String,
-        checkInTime: String,
-        latitude: String,
-        longitude: String,
-        isInOffice: Boolean,
-        photo: File,
-        notes: String?,
-        date: String
+    fun checkIn(userId: String, checkInTime: String, latitude: String, longitude: String,
+                isInOffice: Boolean, photo: File, notes: String?, date: String
     ): Flow<Resource<BaseResponse>>
 
     fun checkOut(userId: String, checkOutTime: String, latitude: String, longitude: String, date: String): Flow<Resource<BaseResponse>>
 
     fun getWaitingAttendance(date: String): Flow<Resource<GetWaitingAttendanceResponse>>
+
+    fun updateAttendanceStatus(id: String, status: String): Flow<Resource<BaseResponse>>
 
 }

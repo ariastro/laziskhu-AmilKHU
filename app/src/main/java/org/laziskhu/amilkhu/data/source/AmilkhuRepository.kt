@@ -50,15 +50,8 @@ class AmilkhuRepository @Inject constructor(
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
 
-    override fun checkIn(
-        userId: String,
-        checkInTime: String,
-        latitude: String,
-        longitude: String,
-        isInOffice: Boolean,
-        photo: File,
-        notes: String?,
-        date: String
+    override fun checkIn(userId: String, checkInTime: String, latitude: String, longitude: String,
+                         isInOffice: Boolean, photo: File, notes: String?, date: String
     ): Flow<Resource<BaseResponse>> = flow {
         remoteDataSource.checkIn(userId, checkInTime, latitude, longitude, isInOffice, photo, notes, date).let {
             it.suspendOnSuccess {
@@ -88,9 +81,21 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(message(), GetWaitingAttendanceResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message, GetWaitingAttendanceResponse()))
             }.suspendOnException {
                 emit(Resource.error(message, GetWaitingAttendanceResponse()))
+            }
+        }
+    }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
+
+    override fun updateAttendanceStatus(id: String, status: String): Flow<Resource<BaseResponse>> = flow {
+        remoteDataSource.updateAttendanceStatus(id, status).let {
+            it.suspendOnSuccess {
+                emit(Resource.success(data))
+            }.suspendOnError {
+                emit(Resource.error(map(ErrorResponseMapper)?.message, BaseResponse()))
+            }.suspendOnException {
+                emit(Resource.error(message, BaseResponse()))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)

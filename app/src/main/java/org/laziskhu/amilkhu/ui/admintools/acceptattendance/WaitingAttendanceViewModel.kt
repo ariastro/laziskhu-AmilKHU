@@ -13,4 +13,6 @@ class WaitingAttendanceViewModel @Inject constructor(private val repository: Ami
 
     fun getWaitingAttendance() = repository.getWaitingAttendance(getCurrentDate()).asLiveData()
 
+    fun updateAttendanceStatus(id: String, status: String) = repository.updateAttendanceStatus(id, status).asLiveData()
+
 }

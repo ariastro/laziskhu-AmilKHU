@@ -41,6 +41,6 @@ class LoginViewModel @Inject constructor(private val repository: AmilkhuReposito
     }
 
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > 5
+        return password.isNotEmpty()
     }
 }
