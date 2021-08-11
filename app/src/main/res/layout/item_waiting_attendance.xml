@@ -4,6 +4,7 @@
 	xmlns:tools="http://schemas.android.com/tools">
 
 	<data>
+
 		<variable
 			name="itemWaitingAttendance"
 			type="org.laziskhu.amilkhu.data.source.remote.response.GetWaitingAttendanceResponse.WaitingAttendance" />
@@ -25,22 +26,23 @@
 				android:layout_width="@dimen/_50sdp"
 				android:layout_height="@dimen/_50sdp"
 				android:layout_margin="@dimen/_12sdp"
-				app:setImageUrl="@{itemWaitingAttendance.avatar}"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
+				app:setImageUrl="@{itemWaitingAttendance.avatar}"
 				tools:src="@tools:sample/avatars" />
 
 			<androidx.appcompat.widget.AppCompatTextView
 				android:id="@+id/fullname"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="@dimen/_12sdp"
+				android:layout_marginStart="@dimen/_12sdp"
+				android:layout_marginEnd="@dimen/_8sdp"
+				android:text="@{itemWaitingAttendance.name}"
 				android:textAppearance="@style/TextStyle.Bold"
 				android:textColor="@color/colorPrimary"
-				android:text="@{itemWaitingAttendance.name}"
 				android:textSize="@dimen/_12ssp"
 				app:layout_constraintBottom_toTopOf="@+id/position"
-				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/btn_see_photo"
 				app:layout_constraintStart_toEndOf="@+id/avatar"
 				app:layout_constraintTop_toTopOf="@+id/avatar"
 				app:layout_constraintVertical_chainStyle="packed"
@@ -50,15 +52,32 @@
 				android:id="@+id/position"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
+				android:text="@{itemWaitingAttendance.position}"
 				android:textAppearance="@style/TextStyle.Regular"
 				android:textColor="@color/gray3"
 				android:textSize="@dimen/_9ssp"
-				android:text="@{itemWaitingAttendance.position}"
 				app:layout_constraintBottom_toBottomOf="@+id/avatar"
 				app:layout_constraintEnd_toEndOf="@+id/fullname"
 				app:layout_constraintStart_toStartOf="@+id/fullname"
 				app:layout_constraintTop_toBottomOf="@+id/fullname"
 				tools:text="@tools:sample/full_names" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/btn_see_photo"
+				style="@style/LayoutClickable"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:text="@string/lihat_foto"
+				android:drawablePadding="@dimen/_4sdp"
+				android:drawableTint="@color/colorPrimary"
+				android:drawableStart="@drawable/ic_baseline_camera_alt_24"
+				android:layout_marginEnd="@dimen/_12sdp"
+				android:textAppearance="@style/TextStyle.Regular"
+				android:textColor="@color/colorPrimary"
+				android:textSize="@dimen/_9ssp"
+				app:layout_constraintBottom_toBottomOf="@+id/avatar"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/avatar" />
 
 			<LinearLayout
 				android:id="@+id/detail_layout"
@@ -129,12 +148,12 @@
 				<LinearLayout
 					android:id="@+id/notes_layout"
 					android:layout_width="0dp"
-					android:visibility="gone"
 					android:layout_height="wrap_content"
 					android:layout_marginStart="@dimen/_3sdp"
 					android:layout_weight="1.2"
 					android:gravity="center"
-					android:orientation="vertical">
+					android:orientation="vertical"
+					android:visibility="gone">
 
 					<androidx.appcompat.widget.AppCompatTextView
 						android:layout_width="wrap_content"

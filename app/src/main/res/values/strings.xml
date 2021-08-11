@@ -25,8 +25,6 @@
 	<string name="submit">Submit</string>
 	<string name="already_checkin">Anda sudah absen!</string>
 	<string name="already_checkout">Anda sudah absen pulang!</string>
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
 	<string name="payment_gateway">Payment Gateway</string>
 	<string name="kalkulator_zakat">Kalkulator Zakat</string>
 	<string name="kehadiran_harian">Kehadiran Harian</string>
@@ -45,4 +43,5 @@
 	<string name="apakah_anda_yakin_untuk_menyetujui_absensi_kehadiran_ini">Apakah anda yakin untuk menyetujui absensi kehadiran ini?</string>
 	<string name="accepted_attendance">Kehadiran berhasil disetujui</string>
 	<string name="data_tidak_ditemukan">Data tidak ditemukan!</string>
+	<string name="lihat_foto">Lihat Foto</string>
 </resources>

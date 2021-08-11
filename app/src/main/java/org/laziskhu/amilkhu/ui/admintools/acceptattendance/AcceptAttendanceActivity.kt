@@ -44,9 +44,15 @@ class AcceptAttendanceActivity : BaseActivity() {
             binding.swipeRefreshLayout.isRefreshing = false
             getWaitingAttendance()
         }
-        adapter = WaitingAttendanceAdapter(this) {
-            showAcceptAttendanceDialog(it.idAttendence ?: "")
-        }
+        adapter = WaitingAttendanceAdapter(
+            context = this,
+            onClick = {
+                showAcceptAttendanceDialog(it.idAttendence ?: "")
+            },
+            onClickShowImage = {
+                ZoomImageFragment.newInstance(it.getAttendanceImage()).show(supportFragmentManager, ZoomImageFragment.TAG)
+            }
+        )
         binding.rvAttendance.setHasFixedSize(true)
         binding.rvAttendance.adapter = adapter
     }

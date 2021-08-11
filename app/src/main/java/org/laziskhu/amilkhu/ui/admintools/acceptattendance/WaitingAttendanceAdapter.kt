@@ -13,8 +13,12 @@ import org.laziskhu.amilkhu.utils.Constants.IN_OFFICE_CODE
 import org.laziskhu.amilkhu.utils.toGone
 import org.laziskhu.amilkhu.utils.toVisible
 
-class WaitingAttendanceAdapter(private val context: Context, private val onClick: (GetWaitingAttendanceResponse.WaitingAttendance) -> Unit) :
-    ListAdapter<GetWaitingAttendanceResponse.WaitingAttendance, WaitingAttendanceAdapter.WaitingAttendanceViewHolder>(DiffCallback) {
+class WaitingAttendanceAdapter(
+    private val context: Context,
+    private val onClick: (GetWaitingAttendanceResponse.WaitingAttendance) -> Unit,
+    private val onClickShowImage: (GetWaitingAttendanceResponse.WaitingAttendance) -> Unit
+) : ListAdapter<GetWaitingAttendanceResponse.WaitingAttendance, WaitingAttendanceAdapter.WaitingAttendanceViewHolder>(
+        DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WaitingAttendanceViewHolder =
         WaitingAttendanceViewHolder.from(parent)
@@ -30,6 +34,12 @@ class WaitingAttendanceAdapter(private val context: Context, private val onClick
         } else {
             holder.binding.isInOffice.text = context.getString(R.string.di_luar_kantor)
             holder.binding.notesLayout.toVisible()
+        }
+
+        holder.binding.btnSeePhoto.setOnClickListener {
+            if (attendance != null) {
+                onClickShowImage(attendance)
+            }
         }
 
         holder.binding.root.setOnClickListener {
@@ -57,7 +67,8 @@ class WaitingAttendanceAdapter(private val context: Context, private val onClick
         }
     }
 
-    private companion object DiffCallback : DiffUtil.ItemCallback<GetWaitingAttendanceResponse.WaitingAttendance>() {
+    private companion object DiffCallback :
+        DiffUtil.ItemCallback<GetWaitingAttendanceResponse.WaitingAttendance>() {
 
         override fun areItemsTheSame(
             oldItem: GetWaitingAttendanceResponse.WaitingAttendance,

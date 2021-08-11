@@ -4,6 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
+import org.laziskhu.amilkhu.BuildConfig
 
 @Parcelize
 @JsonClass(generateAdapter = true)
@@ -58,5 +59,9 @@ data class GetWaitingAttendanceResponse(
         val gender: String? = null,
         @Json(name = "position")
         val position: String? = null
-    ) : Parcelable
+    ) : Parcelable {
+
+        fun getAttendanceImage() = BuildConfig.IMAGE_URL + photo
+
+    }
 }
