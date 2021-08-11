@@ -44,4 +44,5 @@
 	<string name="tolak">Tolak</string>
 	<string name="apakah_anda_yakin_untuk_menyetujui_absensi_kehadiran_ini">Apakah anda yakin untuk menyetujui absensi kehadiran ini?</string>
 	<string name="accepted_attendance">Kehadiran berhasil disetujui</string>
+	<string name="data_tidak_ditemukan">Data tidak ditemukan!</string>
 </resources>

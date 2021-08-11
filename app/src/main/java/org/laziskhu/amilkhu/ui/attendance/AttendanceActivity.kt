@@ -22,7 +22,6 @@ import org.laziskhu.amilkhu.utils.Constants.LAZISKHU_LATITUDE
 import org.laziskhu.amilkhu.utils.Constants.LAZISKHU_LONGITUDE
 import org.laziskhu.amilkhu.utils.Constants.MAX_DISTANCE
 import org.laziskhu.amilkhu.vo.Status
-import org.threeten.bp.LocalDate
 import java.io.File
 
 class AttendanceActivity : BaseActivity() {
@@ -86,6 +85,7 @@ class AttendanceActivity : BaseActivity() {
 
     private fun calculateDistance() {
         val distance = getDistance(latitude, LAZISKHU_LATITUDE, longitude, LAZISKHU_LONGITUDE)
+        logDebug("distance: $distance")
         if (distance <= MAX_DISTANCE) {
             isInOffice = true
             binding.btnSubmit.toGone()
@@ -199,11 +199,8 @@ class AttendanceActivity : BaseActivity() {
                     locationRequest.fastestInterval = 5000
                     locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
                     locationCallback = object : LocationCallback() {
-                        override fun onLocationResult(locationResult: LocationResult?) {
+                        override fun onLocationResult(locationResult: LocationResult) {
                             super.onLocationResult(locationResult)
-                            if (locationResult == null) {
-                                return
-                            }
                             val location = locationResult.lastLocation
                             latitude = location.latitude
                             longitude = location.longitude

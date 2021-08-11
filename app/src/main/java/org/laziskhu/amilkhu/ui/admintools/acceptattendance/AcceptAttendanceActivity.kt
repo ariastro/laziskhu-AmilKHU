@@ -14,6 +14,8 @@ import org.laziskhu.amilkhu.utils.Constants.ACCEPTED
 import org.laziskhu.amilkhu.utils.Constants.DENIED
 import org.laziskhu.amilkhu.utils.showErrorToasty
 import org.laziskhu.amilkhu.utils.showSuccessToasty
+import org.laziskhu.amilkhu.utils.toGone
+import org.laziskhu.amilkhu.utils.toVisible
 import org.laziskhu.amilkhu.vo.Status
 
 class AcceptAttendanceActivity : BaseActivity() {
@@ -54,10 +56,19 @@ class AcceptAttendanceActivity : BaseActivity() {
             when (it.status) {
                 Status.SUCCESS -> {
                     progress.dismiss()
-                    adapter.submitList(it.data?.data)
+                    val data = it.data?.data
+                    if (!data.isNullOrEmpty()) {
+                        binding.rvAttendance.toVisible()
+                        binding.noDataLayout.root.toGone()
+                        adapter.submitList(it.data.data)
+                    } else {
+                        binding.rvAttendance.toGone()
+                        binding.noDataLayout.root.toVisible()
+                    }
                 }
                 Status.ERROR -> {
                     progress.dismiss()
+                    showErrorToasty(it.message.toString())
                 }
                 Status.LOADING -> {
                     progress.show()
@@ -99,7 +110,7 @@ class AcceptAttendanceActivity : BaseActivity() {
                 }
                 Status.SUCCESS -> {
                     progress.dismiss()
-                    showSuccessToasty(getString(R.string.accepted_attendance))
+                    showSuccessToasty(it.data?.message.toString())
                     getWaitingAttendance()
                 }
             }

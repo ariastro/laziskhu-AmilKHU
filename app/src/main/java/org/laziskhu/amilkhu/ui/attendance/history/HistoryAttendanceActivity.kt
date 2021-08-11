@@ -5,6 +5,8 @@ import androidx.activity.viewModels
 import org.laziskhu.amilkhu.base.BaseActivity
 import org.laziskhu.amilkhu.databinding.ActivityHistoryAttendanceBinding
 import org.laziskhu.amilkhu.utils.showErrorToasty
+import org.laziskhu.amilkhu.utils.toGone
+import org.laziskhu.amilkhu.utils.toVisible
 import org.laziskhu.amilkhu.vo.Status
 
 class HistoryAttendanceActivity : BaseActivity() {
@@ -31,6 +33,9 @@ class HistoryAttendanceActivity : BaseActivity() {
             binding.swipeRefreshLayout.isRefreshing = false
             getHistory()
         }
+        adapter = HistoryAdapter {}
+        binding.rvHistory.setHasFixedSize(true)
+        binding.rvHistory.adapter = adapter
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -50,11 +55,15 @@ class HistoryAttendanceActivity : BaseActivity() {
                 }
                 Status.SUCCESS -> {
                     progress.dismiss()
-                    adapter = HistoryAdapter {}
-                    adapter.submitList(it.data?.data)
-                    adapter.notifyDataSetChanged()
-                    binding.rvHistory.adapter = adapter
-                    binding.rvHistory.setHasFixedSize(true)
+                    val data = it.data?.data
+                    if (!data.isNullOrEmpty()) {
+                        binding.rvHistory.toVisible()
+                        binding.noDataLayout.root.toGone()
+                        adapter.submitList(it.data.data)
+                    } else {
+                        binding.rvHistory.toGone()
+                        binding.noDataLayout.root.toVisible()
+                    }
                 }
             }
         }

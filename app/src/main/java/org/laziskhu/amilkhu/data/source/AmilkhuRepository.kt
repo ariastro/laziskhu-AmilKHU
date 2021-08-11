@@ -1,13 +1,16 @@
 package org.laziskhu.amilkhu.data.source
 
 import com.skydoves.sandwich.*
-import org.laziskhu.amilkhu.vo.Resource
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onStart
 import org.laziskhu.amilkhu.data.source.remote.RemoteDataSource
 import org.laziskhu.amilkhu.data.source.remote.response.*
+import org.laziskhu.amilkhu.utils.Constants.DEFAULT_ERROR_MESSAGE
 import org.laziskhu.amilkhu.utils.ErrorResponseMapper
-import org.laziskhu.amilkhu.utils.logDebug
+import org.laziskhu.amilkhu.vo.Resource
 import java.io.File
 import javax.inject.Inject
 
@@ -17,24 +20,26 @@ class AmilkhuRepository @Inject constructor(
 ) : AmilkhuDataSource {
 
     override fun login(username: String, password: String): Flow<Resource<LoginResponse>> = flow {
-        val response = remoteDataSource.login(username, password)
-        response.suspendOnSuccess {
-            emit(Resource.success(data))
-        }.suspendOnError {
-            emit(Resource.error(map(ErrorResponseMapper)?.message, LoginResponse()))
-        }.suspendOnException {
-            emit(Resource.error(message, LoginResponse()))
+        remoteDataSource.login(username, password).let {
+            it.suspendOnSuccess {
+                emit(Resource.success(data))
+            }.suspendOnError {
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, null))
+            }.suspendOnException {
+                emit(Resource.error(message(), null))
+            }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
 
     override fun getProfile(id: String): Flow<Resource<GetProfileResponse>> = flow {
-        val response = remoteDataSource.getProfile(id)
-        response.suspendOnSuccess {
-            emit(Resource.success(data))
-        }.suspendOnError {
-            emit(Resource.error(map(ErrorResponseMapper)?.message, GetProfileResponse()))
-        }.suspendOnException {
-            emit(Resource.error(message, GetProfileResponse()))
+        remoteDataSource.getProfile(id).let {
+            it.suspendOnSuccess {
+                emit(Resource.success(data))
+            }.suspendOnError {
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, GetProfileResponse()))
+            }.suspendOnException {
+                emit(Resource.error(message(), GetProfileResponse()))
+            }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
 
@@ -43,9 +48,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message, GetHistoryAttendanceResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, GetHistoryAttendanceResponse()))
             }.suspendOnException {
-                emit(Resource.error(message, GetHistoryAttendanceResponse()))
+                emit(Resource.error(message(), GetHistoryAttendanceResponse()))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
@@ -57,9 +62,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message, BaseResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, BaseResponse()))
             }.suspendOnException {
-                emit(Resource.error(message, BaseResponse()))
+                emit(Resource.error(message(), BaseResponse()))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
@@ -69,9 +74,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message, BaseResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, BaseResponse()))
             }.suspendOnException {
-                emit(Resource.error(message, BaseResponse()))
+                emit(Resource.error(message(), BaseResponse()))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
@@ -81,9 +86,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message, GetWaitingAttendanceResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, GetWaitingAttendanceResponse()))
             }.suspendOnException {
-                emit(Resource.error(message, GetWaitingAttendanceResponse()))
+                emit(Resource.error(message(), GetWaitingAttendanceResponse()))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
@@ -93,9 +98,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message, BaseResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, BaseResponse()))
             }.suspendOnException {
-                emit(Resource.error(message, BaseResponse()))
+                emit(Resource.error(message(), BaseResponse()))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)

@@ -36,4 +36,6 @@ object Constants {
 
     const val MAX_DISTANCE = 2000.3
 
+    const val DEFAULT_ERROR_MESSAGE = "Terjadi kesalahan!"
+
 }
