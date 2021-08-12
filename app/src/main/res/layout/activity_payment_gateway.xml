@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ui.amiltools.payment.PaymentGatewayActivity">
+
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:background="@color/colorPrimary"
+		android:theme="@style/AppBarOverlay"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:navigationIcon="@drawable/ic_baseline_keyboard_arrow_left_24" />
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:fillViewport="true"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/_12sdp"
+				android:layout_marginTop="@dimen/_12sdp"
+				android:text="@string/bank_transfer"
+				android:textAppearance="@style/TextStyle.Medium"
+				android:textColor="@color/colorPrimary"
+				android:textSize="@dimen/_14ssp" />
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rv_rekening"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginVertical="@dimen/_4sdp"
+				android:clipToPadding="false"
+				android:overScrollMode="never"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				tools:itemCount="2"
+				tools:listitem="@layout/item_rekening" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/_12sdp"
+				android:layout_marginTop="@dimen/_24sdp"
+				android:text="@string/qris"
+				android:textAppearance="@style/TextStyle.Medium"
+				android:textColor="@color/colorPrimary"
+				android:textSize="@dimen/_14ssp" />
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rv_qris"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginVertical="@dimen/_4sdp"
+				android:clipToPadding="false"
+				android:overScrollMode="never"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				tools:itemCount="1"
+				tools:listitem="@layout/item_qris" />
+
+		</LinearLayout>
+
+	</androidx.core.widget.NestedScrollView>
+
+	<include
+		android:id="@+id/no_data_layout"
+		layout="@layout/no_data_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

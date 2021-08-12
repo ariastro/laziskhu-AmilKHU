@@ -55,4 +55,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     suspend fun updateAttendanceStatus(id: String, status: String): ApiResponse<BaseResponse> =
         apiService.updateAttendanceStatus(id, status)
 
+    suspend fun getPaymentGateway(isQRIS: Int): ApiResponse<GetPaymentGatewayResponse> =
+        apiService.getPaymentGateway(isQRIS)
+
 }

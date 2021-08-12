@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+		<variable
+			name="itemRekening"
+			type="org.laziskhu.amilkhu.data.source.remote.response.GetPaymentGatewayResponse.Rekening" />
+	</data>
+
+	<com.google.android.material.card.MaterialCardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/_8sdp"
+		android:layout_marginVertical="@dimen/_6sdp"
+		app:cardCornerRadius="@dimen/_8sdp">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingHorizontal="@dimen/_16sdp"
+			android:paddingVertical="@dimen/_8sdp">
+
+			<androidx.appcompat.widget.AppCompatImageView
+				android:id="@+id/img_logo"
+				android:layout_width="@dimen/_60sdp"
+				android:layout_height="@dimen/_40sdp"
+				app:setImageUrl="@{itemRekening.logo}"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/rekening_number"
+				app:layout_constraintHorizontal_chainStyle="spread_inside"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:src="@drawable/bni_syariah" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/rekening_number"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:textAppearance="@style/TextStyle.Medium"
+				android:textColor="@color/black"
+				android:text="@{itemRekening.rekeningNumber}"
+				android:layout_marginHorizontal="@dimen/_12sdp"
+				android:textSize="@dimen/_14ssp"
+				app:layout_constraintBottom_toBottomOf="@+id/img_logo"
+				app:layout_constraintEnd_toStartOf="@+id/bank_code"
+				app:layout_constraintStart_toEndOf="@+id/img_logo"
+				app:layout_constraintTop_toTopOf="@+id/img_logo"
+				tools:text="7159 210258 12848" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/bank_code"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textAppearance="@style/TextStyle.Medium"
+				android:textColor="@color/colorPrimary"
+				android:text="@{itemRekening.bankCode}"
+				android:textSize="@dimen/_12ssp"
+				app:layout_constraintBottom_toBottomOf="@+id/img_logo"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toEndOf="@+id/rekening_number"
+				app:layout_constraintTop_toTopOf="@+id/img_logo"
+				tools:text="71" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</com.google.android.material.card.MaterialCardView>
+
+</layout>

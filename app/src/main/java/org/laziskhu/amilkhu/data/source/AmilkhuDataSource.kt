@@ -23,4 +23,6 @@ interface AmilkhuDataSource {
 
     fun updateAttendanceStatus(id: String, status: String): Flow<Resource<BaseResponse>>
 
+    fun getPaymentGateway(isQRIS: Int): Flow<Resource<GetPaymentGatewayResponse>>
+
 }

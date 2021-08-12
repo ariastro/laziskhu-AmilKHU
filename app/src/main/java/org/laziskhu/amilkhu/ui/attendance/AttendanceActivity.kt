@@ -51,8 +51,8 @@ class AttendanceActivity : BaseActivity() {
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_attendance)
 
         getAttendanceType()
-        progress.show()
         setupUI()
+        progress.show()
         setupClickListeners()
         setupSearchWatchers()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)

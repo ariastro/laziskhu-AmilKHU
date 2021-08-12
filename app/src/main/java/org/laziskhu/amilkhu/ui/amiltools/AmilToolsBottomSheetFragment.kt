@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import org.laziskhu.amilkhu.R
 import org.laziskhu.amilkhu.databinding.FragmentAmilToolsBottomSheetBinding
+import org.laziskhu.amilkhu.ui.amiltools.payment.PaymentGatewayActivity
+import org.laziskhu.amilkhu.utils.pushActivity
 
 class AmilToolsBottomSheetFragment : SuperBottomSheetFragment() {
 
@@ -27,7 +29,10 @@ class AmilToolsBottomSheetFragment : SuperBottomSheetFragment() {
     }
 
     private fun setupClickListeners() {
-
+        binding.btnPaymentGateway.setOnClickListener {
+            dismiss()
+            pushActivity(PaymentGatewayActivity::class.java)
+        }
     }
 
     override fun getCornerRadius() = requireContext().resources.getDimension(R.dimen.sheet_rounded_corner)

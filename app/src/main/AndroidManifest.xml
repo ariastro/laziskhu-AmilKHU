@@ -19,11 +19,14 @@
 		android:theme="@style/Theme.AmilKHU"
 		android:usesCleartextTraffic="true"
 		tools:targetApi="Q">
-		<activity android:name=".ui.admintools.acceptattendance.AcceptAttendanceActivity"
-			android:label="@string/persetujuan"/>
+		<activity android:name=".ui.amiltools.payment.PaymentGatewayActivity"
+			android:label="@string/payment_gateway"/>
+		<activity
+			android:name=".ui.admintools.acceptattendance.AcceptAttendanceActivity"
+			android:label="@string/persetujuan" />
 		<activity android:name=".ui.attendance.AttendanceActivity" />
 		<activity
-			android:name=".ui.attendance.history.HistoryAttendanceActivity"
+			android:name="org.laziskhu.amilkhu.ui.history.HistoryAttendanceActivity"
 			android:label="@string/riwayat_kehadiran" />
 		<activity android:name=".ui.auth.login.LoginActivity" />
 		<activity android:name=".ui.main.MainActivity" />

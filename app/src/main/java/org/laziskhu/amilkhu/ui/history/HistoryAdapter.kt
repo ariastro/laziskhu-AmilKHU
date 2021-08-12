@@ -1,4 +1,4 @@
-package org.laziskhu.amilkhu.ui.attendance.history
+package org.laziskhu.amilkhu.ui.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -19,7 +19,6 @@ import org.laziskhu.amilkhu.utils.Constants.WAITING
 import org.laziskhu.amilkhu.utils.Constants.dateOnlyFormat
 import org.laziskhu.amilkhu.utils.Constants.monthOnlyFormat
 import org.laziskhu.amilkhu.utils.Constants.timeStampFormat
-import org.laziskhu.amilkhu.utils.getColorCompat
 
 class HistoryAdapter(private val onClick: (HistoryAttendance) -> Unit) :
     ListAdapter<HistoryAttendance, HistoryAdapter.HistoryViewHolder>(DiffCallback) {

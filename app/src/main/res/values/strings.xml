@@ -44,4 +44,6 @@
 	<string name="accepted_attendance">Kehadiran berhasil disetujui</string>
 	<string name="data_tidak_ditemukan">Data tidak ditemukan!</string>
 	<string name="lihat_foto">Lihat Foto</string>
+	<string name="qris">QRIS</string>
+	<string name="bank_transfer">Bank Transfer</string>
 </resources>

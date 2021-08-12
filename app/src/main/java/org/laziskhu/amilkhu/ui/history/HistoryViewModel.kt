@@ -1,4 +1,4 @@
-package org.laziskhu.amilkhu.ui.attendance.history
+package org.laziskhu.amilkhu.ui.history
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

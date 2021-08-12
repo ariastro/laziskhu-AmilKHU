@@ -36,9 +36,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, GetProfileResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, null))
             }.suspendOnException {
-                emit(Resource.error(message(), GetProfileResponse()))
+                emit(Resource.error(message(), null))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
@@ -48,9 +48,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, GetHistoryAttendanceResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, null))
             }.suspendOnException {
-                emit(Resource.error(message(), GetHistoryAttendanceResponse()))
+                emit(Resource.error(message(), null))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
@@ -62,9 +62,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, BaseResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, null))
             }.suspendOnException {
-                emit(Resource.error(message(), BaseResponse()))
+                emit(Resource.error(message(), null))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
@@ -74,9 +74,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, BaseResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, null))
             }.suspendOnException {
-                emit(Resource.error(message(), BaseResponse()))
+                emit(Resource.error(message(), null))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
@@ -86,9 +86,9 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, GetWaitingAttendanceResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, null))
             }.suspendOnException {
-                emit(Resource.error(message(), GetWaitingAttendanceResponse()))
+                emit(Resource.error(message(), null))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
@@ -98,9 +98,21 @@ class AmilkhuRepository @Inject constructor(
             it.suspendOnSuccess {
                 emit(Resource.success(data))
             }.suspendOnError {
-                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, BaseResponse()))
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, null))
             }.suspendOnException {
-                emit(Resource.error(message(), BaseResponse()))
+                emit(Resource.error(message(), null))
+            }
+        }
+    }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)
+
+    override fun getPaymentGateway(isQRIS: Int): Flow<Resource<GetPaymentGatewayResponse>> = flow {
+        remoteDataSource.getPaymentGateway(isQRIS).let {
+            it.suspendOnSuccess {
+                emit(Resource.success(data))
+            }.suspendOnError {
+                emit(Resource.error(map(ErrorResponseMapper)?.message ?: DEFAULT_ERROR_MESSAGE, null))
+            }.suspendOnException {
+                emit(Resource.error(message(), null))
             }
         }
     }.onStart { emit(Resource.loading(null)) }.flowOn(ioDispatcher)

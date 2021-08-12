@@ -15,7 +15,7 @@ import org.laziskhu.amilkhu.di.module.GlideApp
 import org.laziskhu.amilkhu.ui.admintools.AdminToolsBottomSheetFragment
 import org.laziskhu.amilkhu.ui.amiltools.AmilToolsBottomSheetFragment
 import org.laziskhu.amilkhu.ui.attendance.AttendanceActivity
-import org.laziskhu.amilkhu.ui.attendance.history.HistoryAttendanceActivity
+import org.laziskhu.amilkhu.ui.history.HistoryAttendanceActivity
 import org.laziskhu.amilkhu.utils.Role
 import org.laziskhu.amilkhu.utils.getCurrentDate
 import org.laziskhu.amilkhu.utils.pushActivity

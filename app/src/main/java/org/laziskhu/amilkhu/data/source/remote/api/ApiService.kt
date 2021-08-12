@@ -58,4 +58,9 @@ interface ApiService {
         @Field("status") status: String
     ): ApiResponse<BaseResponse>
 
+    @GET("rekening")
+    suspend fun getPaymentGateway(
+        @Query("isQRIS") isQRIS: Int
+    ): ApiResponse<GetPaymentGatewayResponse>
+
 }
