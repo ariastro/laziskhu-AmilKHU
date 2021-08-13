@@ -35,8 +35,8 @@ class HistoryAdapter(private val onClick: (HistoryAttendance) -> Unit) :
         val month = history.date?.toLocalDate(timeStampFormat)?.format(monthOnlyFormat)
         holder.binding.date.text = date
         holder.binding.month.text = month
-        holder.binding.notes.text = history.catatan
-        holder.binding.notes.isGone = history.catatan.isNullOrEmpty()
+        holder.binding.notes.text = history.notes
+        holder.binding.notes.isGone = history.notes.isNullOrEmpty()
         holder.binding.checkOutTime.text = history.homeTime?.take(5) ?: "-"
         val context = holder.binding.status.context
         holder.binding.status.apply {

@@ -8,8 +8,8 @@ import android.os.Parcelable
 @JsonClass(generateAdapter = true)
 @Parcelize
 data class HistoryAttendance(
-    @Json(name = "catatan")
-    val catatan: String? = null,
+    @Json(name = "notes")
+    val notes: String? = null,
     @Json(name = "coming_latitude")
     val comingLatitude: String? = null,
     @Json(name = "coming_longitude")

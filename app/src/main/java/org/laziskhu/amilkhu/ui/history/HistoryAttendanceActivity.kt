@@ -1,12 +1,12 @@
 package org.laziskhu.amilkhu.ui.history
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.viewModels
 import org.laziskhu.amilkhu.base.BaseActivity
 import org.laziskhu.amilkhu.databinding.ActivityHistoryAttendanceBinding
-import org.laziskhu.amilkhu.utils.showErrorToasty
-import org.laziskhu.amilkhu.utils.toGone
-import org.laziskhu.amilkhu.utils.toVisible
+import org.laziskhu.amilkhu.utils.*
 import org.laziskhu.amilkhu.vo.Status
 
 class HistoryAttendanceActivity : BaseActivity() {
@@ -47,23 +47,37 @@ class HistoryAttendanceActivity : BaseActivity() {
         viewModel.getHistoryAttendance().observe(this) {
             when (it.status) {
                 Status.LOADING -> {
-                    progress.show()
+//                    progress.show()
+                    binding.shimmerViewContainer.show()
                 }
                 Status.ERROR -> {
-                    progress.dismiss()
+//                    progress.dismiss()
                     showErrorToasty(it.message.toString())
                 }
                 Status.SUCCESS -> {
-                    progress.dismiss()
-                    val data = it.data?.data
-                    if (!data.isNullOrEmpty()) {
-                        binding.rvHistory.toVisible()
-                        binding.noDataLayout.root.toGone()
-                        adapter.submitList(it.data.data)
-                    } else {
-                        binding.rvHistory.toGone()
-                        binding.noDataLayout.root.toVisible()
-                    }
+//                    progress.dismiss()
+//                    binding.shimmerViewContainer.hide()
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        binding.shimmerViewContainer.hide()
+                        val data = it.data?.data
+                        if (!data.isNullOrEmpty()) {
+                            binding.rvHistory.toVisible()
+                            binding.noDataLayout.root.toGone()
+                            adapter.submitList(it.data.data)
+                        } else {
+                            binding.rvHistory.toGone()
+                            binding.noDataLayout.root.toVisible()
+                        }
+                    }, 3000)
+//                    val data = it.data?.data
+//                    if (!data.isNullOrEmpty()) {
+//                        binding.rvHistory.toVisible()
+//                        binding.noDataLayout.root.toGone()
+//                        adapter.submitList(it.data.data)
+//                    } else {
+//                        binding.rvHistory.toGone()
+//                        binding.noDataLayout.root.toVisible()
+//                    }
                 }
             }
         }

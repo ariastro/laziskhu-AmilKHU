@@ -31,6 +31,7 @@ buildscript {
         circleImageView = '3.1.0'
         imagePickerVersion = "2.1"
         photoViewVersion = "2.3.0"
+        shimmerVersion = "0.5.0"
     }
     repositories {
         google()

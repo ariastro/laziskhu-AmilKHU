@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.github.dhaval2404.imagepicker.ImagePicker
 import es.dmoral.toasty.Toasty
 import org.laziskhu.amilkhu.utils.Constants.COUNTRY_CODE_ID
@@ -187,3 +188,13 @@ private fun rad2deg(rad: Double): Double {
 
 fun getCurrentDate() = LocalDate.now().format(Constants.timeStampFormat)
 fun getCurrentTime() = LocalDateTime.now().format(Constants.timeOnlyFormat)
+
+fun ShimmerFrameLayout.show() {
+    toVisible()
+    startShimmer()
+}
+
+fun ShimmerFrameLayout.hide() {
+    stopShimmer()
+    toGone()
+}
